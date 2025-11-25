@@ -55,11 +55,11 @@ export default function InvestSteps() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
-      className="py-36 bg-white relative"
+      className="py-36 bg-linear-to-br from-slate-50 to-green-50 relative shadow-[0_-25px_50px_-12px_rgba(0,0,0,0.08)] overflow-hidden"
     >
       <div>
         <FaHandHoldingUsd
-          className="absolute -top-5 -right-10 bg-blend-multiply text-green-100/50 z-10 rotate-y-180"
+          className="absolute -top-3 -right-10 bg-blend-multiply text-green-200/60 z-10 rotate-y-180"
           size={400}
         />
       </div>
