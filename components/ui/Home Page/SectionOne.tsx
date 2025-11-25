@@ -93,7 +93,7 @@ const FeaturesSection = () => {
             <motion.div
               key={idx}
               variants={itemVariants}
-              className="bg-emerald-950 backdrop-blur-sm px-4 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20 hover:-translate-y-1"
+              className="bg-emerald-950/70 backdrop-blur-sm px-4 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20 hover:-translate-y-1"
             >
               <div className="flex items-center gap-3 mb-5">
                 <div className="bg-green-500 w-14 h-14 flex items-center justify-center rounded-xl shadow-sm">

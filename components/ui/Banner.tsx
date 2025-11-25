@@ -42,7 +42,7 @@ const statsContainerVariants = {
 };
 const Banner = () => {
   return (
-    <section className="bg-linear-to-br from-green-100 via-green-50/50 to-green-100 py-16 h-screen drop-shadow-2xl">
+    <section className="bg-linear-to-br from-green-100 via-green-50/50 to-green-100 py-16 h-screen drop-shadow-xl">
       <motion.div
         className="mx-auto flex flex-col lg:flex-row gap-12 px-6 lg:px-0 max-w-[80%] h-full "
         variants={containerVariants}

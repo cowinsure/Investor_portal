@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/ui/Navbar";
 import { Roboto } from "next/font/google";
+import LenisProvider from "@/components/ui/Scroll Wrapper/LenisProvider";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -23,7 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${roboto.variable} antialiased`}>
         <Navbar />
-        {children}
+        <LenisProvider>{children}</LenisProvider>
       </body>
     </html>
   );
