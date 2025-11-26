@@ -61,8 +61,10 @@ export default function InvestorLogin() {
 
           {/* Login Button */}
           <button
-            type="submit"
-            onClick={() => router.push("/")}
+            onClick={(e) => {
+              e.preventDefault(); // stop form reload
+              router.push("/");
+            }}
             className="w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-semibold shadow-lg shadow-emerald-500/30 transition-all duration-300 hover:-translate-y-[2px]"
           >
             Login

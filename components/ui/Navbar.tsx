@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Menu, X, LogOut, User } from "lucide-react";
 import path from "path";
 
@@ -14,6 +14,7 @@ const navLinks = [
 ];
 
 export default function Navbar() {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [hasImage, setHasImage] = useState(true);
@@ -135,7 +136,10 @@ export default function Navbar() {
               <div className="p-4 flex flex-col gap-3">
                 <p className="text-sm text-green-600">{email}</p>
 
-                <button className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-green-100 transition text-green-700">
+                <button
+                  onClick={() => router.push("/auth/login")}
+                  className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-green-100 transition text-green-700"
+                >
                   <LogOut size={16} />
                   Sign Out
                 </button>
