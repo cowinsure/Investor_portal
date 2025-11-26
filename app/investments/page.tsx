@@ -74,8 +74,8 @@ export default function MyInvestments() {
   };
 
   return (
-    <div className="p-8 bg-linear-to-br from-emerald-50 via-white to-green-50 min-h-screen">
-      <div className="max-w-[70%] mx-auto pt-30">
+    <div className="p-4 lg:p-8 bg-linear-to-br from-emerald-50 via-white to-green-50 min-h-screen">
+      <div className="lg:max-w-[70%] mx-auto pt-20 lg:pt-30">
         {/* Header */}
         <div
           data-aos="fade-down"
@@ -141,8 +141,8 @@ export default function MyInvestments() {
           className="grid grid-cols-1 gap-8"
         >
           {/* Project list */}
-          <div className="xl:col-span-2 space-y-6">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
+          <div className="space-y-6">
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">
               Your Projects
             </h2>
 
@@ -151,41 +151,50 @@ export default function MyInvestments() {
                 key={p.id}
                 data-aos="fade-up"
                 data-aos-delay={`${600 + idx * 200}`}
-                className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-emerald-100 hover:shadow-xl transition-all overflow-hidden grid grid-cols-3 "
+                className="
+          bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg 
+          border border-emerald-100 hover:shadow-xl 
+          transition-all overflow-hidden 
+          
+          grid grid-cols-1 md:grid-cols-3
+        "
               >
-                <img src={p.image} alt={p.title} className="object-cover w-full h-full" />
+                {/* Image */}
+                <img
+                  src={p.image}
+                  alt={p.title}
+                  className="object-cover w-full h-48 md:h-full"
+                />
 
-                <div className="p-6 col-span-2 grid grid-rows-3">
-                  <div className="row-span-2 flex flex-col gap-4">
-                    {/* title and status */}
-                    <div className="flex justify-between items-start">
-                      <h3 className="text-xl font-bold text-gray-900">
-                        {p.title}
-                      </h3>
-                      <span className="bg-emerald-100 text-emerald-700 text-sm font-semibold px-3 py-1 rounded-full">
-                        {p.status}
-                      </span>
-                    </div>
+                {/* Content */}
+                <div className="p-6 md:col-span-2 flex flex-col">
+                  {/* title + status */}
+                  <div className="flex justify-between items-start mb-4">
+                    <h3 className="text-xl font-bold text-gray-900">
+                      {p.title}
+                    </h3>
 
-                    {/* location and des */}
-                    <div className="">
-                      <p className="text-gray-600 text-sm mb-2 flex items-center gap-1">
-                        <CiLocationOn size={20} /> {p.location}
-                      </p>
-
-                      <p className="text-gray-700 text-sm mb-4 leading-relaxed">
-                        {p.description}
-                      </p>
-                    </div>
+                    <span className="bg-emerald-100 text-emerald-700 text-sm font-semibold px-3 py-1 rounded-full">
+                      {p.status}
+                    </span>
                   </div>
 
-                  {/* investment and link */}
-                  <div className="flex items-center justify-between h-full border-t border-gray-200 py-2">
-                    <div className="">
+                  {/* location + description */}
+                  <p className="text-gray-600 text-sm mb-2 flex items-center gap-1">
+                    <CiLocationOn size={20} /> {p.location}
+                  </p>
+
+                  <p className="text-gray-700 text-sm leading-relaxed mb-4 flex-1">
+                    {p.description}
+                  </p>
+
+                  {/* investment + button */}
+                  <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+                    <div>
                       <div className="flex items-center gap-2">
-                        <TrendingUp className="w-4 h-4 text-emerald-600" />
+                        {/* <TrendingUp className="w-4 h-4 text-emerald-600" /> */}
                         <p className="font-semibold text-emerald-700">
-                          Investment
+                          Investment on Project
                         </p>
                       </div>
                       <p className="font-bold text-2xl">
@@ -195,33 +204,15 @@ export default function MyInvestments() {
 
                     <a
                       href={`/investments/projects/${p.id}`}
-                      className="inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 font-semibold transition-colors"
+                      className="inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 font-semibold transition"
                     >
-                      View Farmers <span className="text-lg">→</span>
+                      View Project →
                     </a>
                   </div>
                 </div>
               </div>
             ))}
           </div>
-
-          {/* Expense chart */}
-          {/* <div
-            data-aos="fade-up"
-            data-aos-delay="800"
-            className="bg-white/90 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-emerald-100 h-fit"
-          >
-            <h2 className="text-xl font-bold text-gray-900 mb-6">
-              Global Expense Distribution
-            </h2>
-            <div className="w-64 mx-auto my-6">
-              <Doughnut data={expenseChartData} />
-            </div>
-
-            <p className="text-center text-gray-600 text-sm leading-relaxed">
-              Breakdown of operational costs across all active projects.
-            </p>
-          </div> */}
         </div>
       </div>
     </div>

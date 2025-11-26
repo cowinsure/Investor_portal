@@ -37,7 +37,7 @@ export default function ProjectDetailsPage() {
     startDate: "2023-01-15",
     overview:
       "Sustainable dairy farming focused on organic milk production using free-range grazing techniques.",
-    allocation: 250000,
+    allocation: 7500000,
     image: image,
     farmers: [
       {
@@ -267,21 +267,83 @@ export default function ProjectDetailsPage() {
           className="mt-4 bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-emerald-100 overflow-hidden"
         >
           <div className="relative w-full">
-            <Image
-              src={project.image}
-              alt={project.title}
-              className="object-cover w-full h-[400px] "
-            />
+            <div className="relative h-[500px] w-full">
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                className="object-cover"
+              />
+
+              {/* Gradient overlay ONLY on image */}
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 from-10% to-transparent to-30%"></div>
+            </div>
             {/* Header */}
-            <div className="absolute bottom-4 left-6 bg-emerald-950/60 backdrop-blur-xs px-4 py-2 rounded-lg shadow-md">
-              <h1 className="text-3xl font-bold text-emerald-200">
-                {project.title}
-              </h1>
-              <div className="flex items-center gap-2 mt-2">
-                <Users className="w-5 h-5 text-emerald-300" />
-                <p className="text-gray-300 font-">
-                  {project.farmersAssigned} Farmers Assigned
-                </p>
+            <div className="absolute bottom-4 px-6 flex justify-between w-full">
+              {/* Project name */}
+              <div
+                className="bg-emerald-950/60 backdrop-blur-xs px-4 py-2 rounded-lg shadow-md"
+                data-aos="fade-right"
+                data-aos-delay="700"
+              >
+                <h1 className="text-3xl font-bold text-emerald-100">
+                  {project.title}
+                </h1>
+                <div className="flex items-center gap-2 mt-2">
+                  <Users className="w-5 h-5 text-emerald-300" />
+                  <p className="text-gray-300 font-">
+                    {project.farmersAssigned} Farmers Assigned
+                  </p>
+                </div>
+              </div>
+
+              {/* Investor Details */}
+              <div className="flex items-center gap-2">
+                {/* My Investment */}
+                <div
+                  className="bg-emerald-950/60 backdrop-blur-xs px-4 py-2 rounded-lg shadow-md"
+                  data-aos="fade-up"
+                  data-aos-delay="400"
+                >
+                  <h1 className="text-md font-bold text-emerald-300">
+                    My Investment
+                  </h1>
+                  <div className="flex items-center gap- mt-">
+                    <p className="text-2xl font-bold text-emerald-100">
+                      $ 250,000
+                    </p>
+                  </div>
+                </div>
+
+                {/* ROI */}
+                <div
+                  className="bg-emerald-950/60 backdrop-blur-xs px-4 py-2 rounded-lg shadow-md"
+                  data-aos="fade-up"
+                  data-aos-delay="500"
+                >
+                  <h1 className="text-md font-bold text-emerald-300">ROI</h1>
+                  <div className="flex items-center gap- mt-">
+                    <p className="text-2xl font-bold text-emerald-100">
+                      17.5% - 20%
+                    </p>
+                  </div>
+                </div>
+                
+                {/* Expected Return */}
+                <div
+                  className="bg-emerald-950/60 backdrop-blur-xs px-4 py-2 rounded-lg shadow-md"
+                  data-aos="fade-up"
+                  data-aos-delay="600"
+                >
+                  <h1 className="text-md font-bold text-emerald-300">
+                    Expected Return
+                  </h1>
+                  <div className="flex items-center gap- mt-">
+                    <p className="text-2xl font-bold text-emerald-100">
+                      $ 350,000
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -318,7 +380,7 @@ export default function ProjectDetailsPage() {
               <div className="flex items-center gap-2 mb-2">
                 {/* <DollarSign className="w-5 h-5 text-emerald-600" /> */}
                 <p className="uppercase text-xs font-semibold text-emerald-700">
-                  Total Allocation
+                  Project value
                 </p>
               </div>
               <h3 className="text-3xl font-bold text-emerald-800 mt-1">
