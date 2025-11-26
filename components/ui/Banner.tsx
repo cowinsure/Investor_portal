@@ -44,74 +44,99 @@ const statsContainerVariants = {
 const Banner = () => {
   const router = useRouter();
   return (
-    <section className="bg-linear-to-br from-green-100 via-green-50/50 to-green-100 py-16 h-screen drop-shadow-xl">
+    <section className="bg-linear-to-br from-green-100 via-green-50/50 to-green-100 py-8 md:py-16 min-h-screen drop-shadow-xl">
       <motion.div
-        className="mx-auto flex flex-col lg:flex-row gap-12 px-6 lg:px-0 max-w-[80%] h-full "
+        className="mx-auto flex flex-col-reverse lg:flex-row gap-8 lg:gap-12 px-4 sm:px-6 lg:px-0 max-w-[98%] lg:max-w-[80%] h-full"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         {/* Left Content */}
-        <div className="flex-1 flex flex-col justify-center">
+        <div className="flex-1 flex flex-col justify-center lg:pt-0">
           <motion.h1
-            className="text-4xl lg:text-7xl font-bold text-gray-800 mb-6"
+            className="text-3xl sm:text-4xl lg:text-6xl xl:text-7xl font-bold text-gray-800 mb-4 lg:mb-6 leading-tight"
             variants={itemVariants}
           >
-            Invest in Real <br /> Livestock,{" "}
+            Invest in Real <br className="hidden lg:block" /> Livestock,{" "}
             <span className="text-green-600">Backed by AI Verification</span>
           </motion.h1>
-          <motion.p className="text-gray-700 mb-8" variants={itemVariants}>
+          <motion.p
+            className="text-gray-700 mb-6 lg:mb-8 text-sm sm:text-base leading-relaxed"
+            variants={itemVariants}
+          >
             Discover transparent, Shariah-compliant livestock investments
             verified by Muzzle Printometry™. Build meaningful wealth while
             supporting real farmers and sustainable agriculture.
           </motion.p>
-          <motion.div className="flex flex-wrap gap-4" variants={itemVariants}>
+          <motion.div
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4"
+            variants={itemVariants}
+          >
             <button
               onClick={() => {
                 document.getElementById("projects")?.scrollIntoView({
                   behavior: "smooth",
                 });
               }}
-              className="cursor-pointer bg-green-600 text-white font-medium px-6 py-3 rounded-lg hover:bg-green-700 transition"
+              className="cursor-pointer bg-green-600 text-white font-medium px-4 sm:px-6 py-3 rounded-lg hover:bg-green-700 transition text-sm sm:text-base"
             >
               Explore Opportunities
             </button>
             <button
               onClick={() => router.push("/investments")}
-              className="cursor-pointer border border-gray-300 text-gray-700 font-medium px-6 py-3 rounded-lg hover:bg-gray-100 transition"
+              className="cursor-pointer border border-gray-300 text-gray-700 font-medium px-4 sm:px-6 py-3 rounded-lg hover:bg-gray-100 transition text-sm sm:text-base"
             >
               View Dashboard
             </button>
           </motion.div>
           {/* Stats */}
           <motion.div
-            className="flex flex-wrap gap-6 mt-10"
+            className="flex flex-wrap gap-4 sm:gap-6 mt-8 lg:mt-10"
             variants={statsContainerVariants}
           >
-            <motion.div variants={itemVariants}>
-              <h3 className="text-green-600 text-xl font-bold">$2.5M+</h3>
-              <p className="text-gray-500 text-sm">Total Invested</p>
+            <motion.div
+              variants={itemVariants}
+              className="text-center sm:text-left"
+            >
+              <h3 className="text-green-600 text-lg sm:text-xl lg:text-2xl font-bold">
+                $2.5M+
+              </h3>
+              <p className="text-gray-500 text-xs sm:text-sm">Total Invested</p>
             </motion.div>
-            <motion.div variants={itemVariants}>
-              <h3 className="text-green-600 text-xl font-bold">1,200+</h3>
-              <p className="text-gray-500 text-sm">Active Investors</p>
+            <motion.div
+              variants={itemVariants}
+              className="text-center sm:text-left"
+            >
+              <h3 className="text-green-600 text-lg sm:text-xl lg:text-2xl font-bold">
+                1,200+
+              </h3>
+              <p className="text-gray-500 text-xs sm:text-sm">
+                Active Investors
+              </p>
             </motion.div>
-            <motion.div variants={itemVariants}>
-              <h3 className="text-green-600 text-xl font-bold">98%</h3>
-              <p className="text-gray-500 text-sm">Satisfaction Rate</p>
+            <motion.div
+              variants={itemVariants}
+              className="text-center sm:text-left"
+            >
+              <h3 className="text-green-600 text-lg sm:text-xl lg:text-2xl font-bold">
+                98%
+              </h3>
+              <p className="text-gray-500 text-xs sm:text-sm">
+                Satisfaction Rate
+              </p>
             </motion.div>
           </motion.div>
         </div>
 
         {/* Right Image */}
         <motion.div
-          className="flex-1 flex items-center"
+          className="flex-1 flex items-center lg:justify-end pt-12 lg:pt-0"
           variants={imageVariants}
         >
           <motion.img
             src="/cow.png"
             alt="Cow in field"
-            className="rounded-xl shadow-xl w-full h-[80%] object-cover"
+            className="rounded-xl shadow-xl w-full lg:max-w-none h-64 sm:h-80 lg:h-[70%] xl:h-[80%] object-cover"
             variants={imageVariants}
           />
         </motion.div>

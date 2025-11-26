@@ -72,7 +72,7 @@ export default function FarmerDetailsPage() {
 
   return (
     <div className="p-8 bg-gradient-to-br from-emerald-50 via-white to-green-50 min-h-screen overflow-hidden">
-      <div className="max-w-[70%] mx-auto pt-30 relative">
+      <div className="max-w-[98%] lg:max-w-[70%] mx-auto pt-30 relative">
         {/* Back */}
         <button
           onClick={() => router.back()}
@@ -84,7 +84,7 @@ export default function FarmerDetailsPage() {
         </button>
         <div>
           <User
-            className="absolute top-30 -left-190 bg-blend-multiply text-green-300/20 z-10"
+            className="absolute top-36 -left-190 bg-blend-multiply text-green-300/20 z-10"
             size={900}
           />
         </div>
