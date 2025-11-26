@@ -3,6 +3,8 @@ import "./globals.css";
 import Navbar from "@/components/ui/Navbar";
 import { Roboto } from "next/font/google";
 import LenisProvider from "@/components/ui/Scroll Wrapper/LenisProvider";
+import "animate.css";
+
 
 const roboto = Roboto({
   subsets: ["latin"],

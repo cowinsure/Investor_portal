@@ -1,4 +1,4 @@
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, MapPin } from "lucide-react";
 import Link from "next/link";
 
 export default function Footer() {
@@ -12,10 +12,26 @@ export default function Footer() {
             <h2 className="text-3xl font-bold text-green-600">
               Insure<span className="text-green-600">Cow</span>
             </h2>
-            <p className="text-gray-300 mt-1">
+            {/* <p className="text-gray-300 mt-1">
               Revolutionizing Livestock Investment • Secure • Transparent •
               Profitable
-            </p>
+            </p> */}
+            <div className="mt-4 space-y-2">
+              <div className="flex items-start gap-2 text-gray-300 text-sm">
+                <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
+                <div>
+                  <p className="font-semibold">Bangladesh Office:</p>
+                  <p>House 117, Road 5, Block B, Niketon, Dhaka, Bangladesh</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-2 text-gray-300 text-sm">
+                <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
+                <div>
+                  <p className="font-semibold">Singapore Office:</p>
+                  <p>192 Waterloo St. #05-03 Skyline, Singapore 187966</p>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* WhatsApp Button */}

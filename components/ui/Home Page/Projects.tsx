@@ -1,6 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { FolderKanban } from "lucide-react";
 import { Layers } from "lucide-react";
 
@@ -31,72 +33,46 @@ const projects = [
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-};
-
 export default function ProjectShowcase() {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
-    <section className="py-36 bg-white relative">
+    <section id="projects" className="py-36 bg-white relative">
       <div>
         <Layers
           className="absolute top-0 -left-20 bg-blend-multiply text-green-200/30 rotate-0"
           size={500}
         />
       </div>
-      <div className="max-w-[80%] mx-auto px-6">
+      <div className="max-w-[70%] mx-auto px-6">
         {/* Section Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-14"
-        >
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
+        <div data-aos="fade-up" className="text-center mb-14">
+          <h2
+            data-aos="fade-up"
+            data-aos-delay="200"
             className="text-4xl font-extrabold text-gray-900 mb-6 tracking-tight"
           >
             Our Projects
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
+          </h2>
+          <p
+            data-aos="fade-up"
+            data-aos-delay="400"
             className="text-lg text-gray-700 mb-16 max-w-2xl mx-auto leading-relaxed"
           >
             Innovative solutions powering the future of livestock investment and
             farm management.
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
 
         {/* Project Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid gap-10 md:grid-cols-2 lg:grid-cols-3"
-        >
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, idx) => (
-            <motion.div
+            <div
               key={idx}
-              variants={itemVariants}
+              data-aos="fade-up"
+              data-aos-delay={`${idx * 200 + 600}`}
               className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl
                         border border-white/20 overflow-hidden transform hover:-translate-y-2
                         transition-all duration-500"
@@ -120,20 +96,16 @@ export default function ProjectShowcase() {
                 </p>
 
                 {/* Tags */}
-                {/* <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag, i) => (
-                    <span
-                      key={i}
-                      className="text-xs px-3 py-1 bg-green-100 text-green-700 rounded-full border border-green-200"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div> */}
+                <div className="flex items-center flex-wrap gap-2 text-sm text-gray-400">
+                  Project status: 
+                  <span className="bg-emerald-100 text-emerald-700 text-sm font-semibold px-3 py-1 rounded-full">
+                    Completed
+                  </span>
+                </div>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

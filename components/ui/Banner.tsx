@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import { motion, easeOut } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -41,6 +42,7 @@ const statsContainerVariants = {
   },
 };
 const Banner = () => {
+  const router = useRouter();
   return (
     <section className="bg-linear-to-br from-green-100 via-green-50/50 to-green-100 py-16 h-screen drop-shadow-xl">
       <motion.div
@@ -64,10 +66,20 @@ const Banner = () => {
             supporting real farmers and sustainable agriculture.
           </motion.p>
           <motion.div className="flex flex-wrap gap-4" variants={itemVariants}>
-            <button className="bg-green-600 text-white font-medium px-6 py-3 rounded-lg hover:bg-green-700 transition">
+            <button
+              onClick={() => {
+                document.getElementById("projects")?.scrollIntoView({
+                  behavior: "smooth",
+                });
+              }}
+              className="cursor-pointer bg-green-600 text-white font-medium px-6 py-3 rounded-lg hover:bg-green-700 transition"
+            >
               Explore Opportunities
             </button>
-            <button className="border border-gray-300 text-gray-700 font-medium px-6 py-3 rounded-lg hover:bg-gray-100 transition">
+            <button
+              onClick={() => router.push("/investments")}
+              className="cursor-pointer border border-gray-300 text-gray-700 font-medium px-6 py-3 rounded-lg hover:bg-gray-100 transition"
+            >
               View Dashboard
             </button>
           </motion.div>
