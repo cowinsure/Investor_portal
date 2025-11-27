@@ -5,16 +5,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import {
-  ArrowLeft,
-  Users,
-  Calendar,
-  DollarSign,
-  TrendingUp,
-  Package,
-  Receipt,
-  User,
-} from "lucide-react";
+import { ArrowLeft, Calendar, Package, Receipt, User } from "lucide-react";
 import { FaLocationDot } from "react-icons/fa6";
 
 export default function FarmerDetailsPage() {

@@ -9,6 +9,12 @@ import { DollarSign, FolderKanban, Layers, FolderCheck } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
+type StatsValues = {
+  currentInvested: number;
+  totalInvested: number;
+  activeProjects: number;
+  closedProjects: number;
+};
 
 const projectsData = [
   {
@@ -26,7 +32,7 @@ const projectsData = [
     title: "Highland Cattle Collective",
     location: "Scotland, UK",
     investment: 180000,
-    status: "Completed",
+    status: "Active",
     image: "/dairy_farm.jpg",
     description:
       "Preservation and ethical breeding of Highland cattle for premium beef and wool markets.",
@@ -51,18 +57,10 @@ export default function MyInvestments() {
     AOS.init();
   }, []);
 
-  // const currentInvested = activeProjects.reduce((sum, p) => sum + p.investment, 0);
   const totalInvested = projects.reduce((sum, p) => sum + p.investment, 0);
   const activeProjects = projects.filter((p) => p.status === "Active").length;
   const closedProjects = projects.filter((p) => p.status !== "Active").length;
   const activeProjectsObj = projects.filter((p) => p.status === "Active");
-
-  type StatsValues = {
-    currentInvested: number;
-    totalInvested: number;
-    activeProjects: number;
-    closedProjects: number;
-  };
 
   const statsValues: StatsValues = {
     currentInvested: activeProjectsObj.reduce(
@@ -106,6 +104,7 @@ export default function MyInvestments() {
     },
   ];
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const icons: Record<string, React.ComponentType<any>> = {
     DollarSign: DollarSign,
     FolderKanban: FolderKanban,
@@ -268,7 +267,7 @@ export default function MyInvestments() {
                                 onClick={() =>
                                   router.push(`/investments/projects/${p.id}`)
                                 }
-                             className="inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 font-semibold transition border border-green-300 px-4 py-3 rounded-lg cursor-pointer hover:bg-emerald-100"
+                                className="inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 font-semibold transition border border-green-300 px-4 py-3 rounded-lg cursor-pointer hover:bg-emerald-100"
                               >
                                 View Project
                               </button>
