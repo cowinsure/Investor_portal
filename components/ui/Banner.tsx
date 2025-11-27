@@ -52,7 +52,7 @@ const Banner = () => {
         animate="visible"
       >
         {/* Left Content */}
-        <div className="flex-1 flex flex-col justify-center lg:pt-0">
+        <div className="flex-1 flex flex-col justify-center lg:pt-10">
           <motion.h1
             className="text-3xl sm:text-4xl lg:text-6xl xl:text-7xl font-bold text-gray-800 mb-4 lg:mb-6 leading-tight"
             variants={itemVariants}
@@ -130,7 +130,7 @@ const Banner = () => {
 
         {/* Right Image */}
         <motion.div
-          className="flex-1 flex items-center lg:justify-end pt-12 lg:pt-0"
+          className="flex-1 flex items-center lg:justify-end pt-12 lg:pt-10"
           variants={imageVariants}
         >
           <motion.img

@@ -1,17 +1,12 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import { Doughnut } from "react-chartjs-2";
 import { CiLocationOn } from "react-icons/ci";
-import {
-  DollarSign,
-  Users,
-  FolderKanban,
-  TrendingUp,
-  LocateIcon,
-} from "lucide-react";
+import { DollarSign, FolderKanban, Layers, FolderCheck } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -26,52 +21,112 @@ const projectsData = [
     description:
       "Sustainable dairy farming focused on organic milk production using free-range grazing techniques.",
   },
-  // {
-  //   id: 2,
-  //   title: "Highland Cattle Collective",
-  //   location: "Scotland, UK",
-  //   investment: 180000,
-  //   status: "Active",
-  //   image: "/images/cattle.jpg",
-  //   description:
-  //     "Preservation and ethical breeding of Highland cattle for premium beef and wool markets.",
-  // },
-  // {
-  //   id: 3,
-  //   title: "Sunny Pastures Co-op",
-  //   location: "Texas, USA",
-  //   investment: 320000,
-  //   status: "Active",
-  //   image: "/images/pasture.jpg",
-  //   description:
-  //     "Community-driven cooperative farm specializing in grass-fed beef and regenerative agriculture.",
-  // },
+  {
+    id: 2,
+    title: "Highland Cattle Collective",
+    location: "Scotland, UK",
+    investment: 180000,
+    status: "Completed",
+    image: "/dairy_farm.jpg",
+    description:
+      "Preservation and ethical breeding of Highland cattle for premium beef and wool markets.",
+  },
+  {
+    id: 3,
+    title: "Sunny Pastures Co-op",
+    location: "Texas, USA",
+    investment: 320000,
+    status: "Completed",
+    image: "/dairy_farm.jpg",
+    description:
+      "Community-driven cooperative farm specializing in grass-fed beef and regenerative agriculture.",
+  },
 ];
 
 export default function MyInvestments() {
+  const router = useRouter();
   const [projects] = useState(projectsData);
 
   useEffect(() => {
     AOS.init();
   }, []);
 
+  // const currentInvested = activeProjects.reduce((sum, p) => sum + p.investment, 0);
   const totalInvested = projects.reduce((sum, p) => sum + p.investment, 0);
+  const activeProjects = projects.filter((p) => p.status === "Active").length;
+  const closedProjects = projects.filter((p) => p.status !== "Active").length;
+  const activeProjectsObj = projects.filter((p) => p.status === "Active");
 
-  const expenseChartData = {
-    labels: ["Feed", "Labor", "Maintenance", "Medical", "Other"],
-    datasets: [
-      {
-        data: [45, 25, 10, 8, 12],
-        backgroundColor: [
-          "#009F6B",
-          "#0EB981",
-          "#65D1A6",
-          "#B7F4DB",
-          "#004F3D",
-        ],
-      },
-    ],
+  type StatsValues = {
+    currentInvested: number;
+    totalInvested: number;
+    activeProjects: number;
+    closedProjects: number;
   };
+
+  const statsValues: StatsValues = {
+    currentInvested: activeProjectsObj.reduce(
+      (sum, p) => sum + p.investment,
+      0
+    ),
+    totalInvested: totalInvested,
+    activeProjects: activeProjects,
+    closedProjects: closedProjects,
+  };
+
+  const statsData: {
+    id: number;
+    label: string;
+    valueKey: keyof StatsValues;
+    icon: string;
+  }[] = [
+    {
+      id: 1,
+      label: "Current Invested",
+      valueKey: "currentInvested",
+      icon: "DollarSign",
+    },
+    {
+      id: 2,
+      label: "Total Invested",
+      valueKey: "totalInvested",
+      icon: "DollarSign",
+    },
+    {
+      id: 3,
+      label: "Active Projects",
+      valueKey: "activeProjects",
+      icon: "FolderKanban",
+    },
+    {
+      id: 4,
+      label: "Completed Projects",
+      valueKey: "closedProjects",
+      icon: "FolderCheck",
+    },
+  ];
+
+  const icons: Record<string, React.ComponentType<any>> = {
+    DollarSign: DollarSign,
+    FolderKanban: FolderKanban,
+    FolderCheck: FolderCheck,
+  };
+
+  // const expenseChartData = {
+  //   labels: ["Feed", "Labor", "Maintenance", "Medical", "Other"],
+  //   datasets: [
+  //     {
+  //       data: [45, 25, 10, 8, 12],
+  //       backgroundColor: [
+  //         "#009F6B",
+  //         "#0EB981",
+  //         "#65D1A6",
+  //         "#B7F4DB",
+  //         "#004F3D",
+  //       ],
+  //     },
+  //   ],
+  // };
 
   return (
     <div className="p-4 lg:p-8 bg-linear-to-br from-emerald-50 via-white to-green-50 min-h-screen">
@@ -97,121 +152,227 @@ export default function MyInvestments() {
         <div
           data-aos="fade-up"
           data-aos-delay="200"
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10"
+          className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10"
         >
-          <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-emerald-100 hover:shadow-xl transition-all">
-            <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
-                <DollarSign className="w-5 h-5 text-emerald-600" />
-              </div>
-              <p className="text-gray-600 font-medium">Total Invested</p>
-            </div>
-            <h2 className="text-3xl font-bold text-emerald-700">
-              ${totalInvested.toLocaleString()}
-            </h2>
-          </div>
+          {statsData.map((item) => {
+            const Icon = icons[item.icon];
 
-          <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-emerald-100 hover:shadow-xl transition-all">
-            <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
-                <Users className="w-5 h-5 text-emerald-600" />
-              </div>
-              <p className="text-gray-600 font-medium">Active Farmers</p>
-            </div>
-            <h2 className="text-3xl font-bold text-emerald-700">5</h2>
-          </div>
+            return (
+              <div
+                key={item.id}
+                className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-emerald-100 hover:shadow-xl transition-all"
+              >
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
+                    <Icon className="w-5 h-5 text-emerald-600" />
+                  </div>
+                  <p className="text-gray-600 font-medium">{item.label}</p>
+                </div>
 
-          <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-emerald-100 hover:shadow-xl transition-all">
-            <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
-                <FolderKanban className="w-5 h-5 text-emerald-600" />
+                <h2 className="text-3xl font-bold text-emerald-700">
+                  {typeof statsValues[item.valueKey] === "number"
+                    ? statsValues[item.valueKey].toLocaleString()
+                    : statsValues[item.valueKey]}
+                </h2>
               </div>
-              <p className="text-gray-600 font-medium">Projects Active</p>
-            </div>
-            <h2 className="text-3xl font-bold text-emerald-700">
-              {projects.length}
-            </h2>
-          </div>
+            );
+          })}
         </div>
 
         {/* Layout */}
         <div
           data-aos="fade-up"
           data-aos-delay="400"
-          className="grid grid-cols-1 gap-8"
+          className="grid grid-cols-1 gap-8 mt-8"
         >
           {/* Project list */}
-          <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">
-              Your Projects
+          <div className="space-y-6 min-h-screen">
+            <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2 mb-5">
+              <Layers className="text-emerald-600" size={30} />
+              Projects
             </h2>
 
-            {projects.map((p, idx) => (
-              <div
-                key={p.id}
-                data-aos="fade-up"
-                data-aos-delay={`${600 + idx * 200}`}
-                className="
-          bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg 
-          border border-emerald-100 hover:shadow-xl 
-          transition-all overflow-hidden 
-          
-          grid grid-cols-1 md:grid-cols-3
-        "
-              >
-                {/* Image */}
-                <img
-                  src={p.image}
-                  alt={p.title}
-                  className="object-cover w-full h-48 md:h-full"
-                />
+            <div className="border p-6 rounded-2xl border-emerald-300">
+              {/* Active Projects */}
+              {projects.filter((p) => p.status === "Active").length > 0 && (
+                <div className="mb-8">
+                  <h3 className="text-lg font-semibold text-emerald-700 mb-4">
+                    Active Projects : {activeProjects}
+                  </h3>
+                  <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
+                    {projects
+                      .filter((p) => p.status === "Active")
+                      .map((p, idx) => (
+                        <div
+                          key={p.id}
+                          data-aos="fade-up"
+                          data-aos-delay={`${idx * 100}`}
+                          className="
+              bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg
+              border border-emerald-100 hover:shadow-xl
+              transition-all overflow-hidden
 
-                {/* Content */}
-                <div className="p-6 md:col-span-2 flex flex-col">
-                  {/* title + status */}
-                  <div className="flex justify-between items-start mb-4">
-                    <h3 className="text-xl font-bold text-gray-900">
-                      {p.title}
-                    </h3>
+              flex flex-col
+            "
+                        >
+                          {/* Image */}
+                          <img
+                            src={p.image}
+                            alt={p.title}
+                            className="object- w-full h-62"
+                          />
 
-                    <span className="bg-emerald-100 text-emerald-700 text-sm font-semibold px-3 py-1 rounded-full">
-                      {p.status}
-                    </span>
-                  </div>
+                          {/* Content */}
+                          <div className="p-4 flex flex-col">
+                            {/* title + status */}
+                            <div className="flex justify-between items-start mb-4">
+                              <h3 className="text-xl font-bold text-gray-900">
+                                {p.title}
+                              </h3>
 
-                  {/* location + description */}
-                  <p className="text-gray-600 text-sm mb-2 flex items-center gap-1">
-                    <CiLocationOn size={20} /> {p.location}
-                  </p>
+                              <span
+                                className={`${
+                                  p.status === "Completed"
+                                    ? "bg-rose-100 text-rose-700"
+                                    : "bg-emerald-100 text-emerald-700"
+                                } text-sm font-semibold px-3 py-1 rounded-full`}
+                              >
+                                {p.status}
+                              </span>
+                            </div>
 
-                  <p className="text-gray-700 text-sm leading-relaxed mb-4 flex-1">
-                    {p.description}
-                  </p>
+                            {/* location + description */}
+                            <p className="text-gray-600 text-sm mb-2 flex items-center gap-1">
+                              <CiLocationOn size={20} /> {p.location}
+                            </p>
 
-                  {/* investment + button */}
-                  <div className="flex items-center justify-between pt-4 border-t border-gray-200">
-                    <div>
-                      <div className="flex items-center gap-2">
-                        {/* <TrendingUp className="w-4 h-4 text-emerald-600" /> */}
-                        <p className="font-semibold text-emerald-700">
-                          Investment on Project
-                        </p>
-                      </div>
-                      <p className="font-bold text-2xl">
-                        ${p.investment.toLocaleString()}
-                      </p>
-                    </div>
+                            <p className="text-gray-700 text-sm leading-relaxed mb-4 flex-1">
+                              {p.description}
+                            </p>
 
-                    <a
-                      href={`/investments/projects/${p.id}`}
-                      className="inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 font-semibold transition"
-                    >
-                      View Project →
-                    </a>
+                            {/* investment + button */}
+                            <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+                              <div>
+                                <div className="flex items-center gap-2">
+                                  {/* <TrendingUp className="w-4 h-4 text-emerald-600" /> */}
+                                  <p className="font-semibold text-emerald-700">
+                                    Investment on Project
+                                  </p>
+                                </div>
+                                <p className="font-bold text-2xl">
+                                  ${p.investment.toLocaleString()}
+                                </p>
+                              </div>
+
+                              <button
+                                onClick={() =>
+                                  router.push(`/investments/projects/${p.id}`)
+                                }
+                             className="inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 font-semibold transition border border-green-300 px-4 py-3 rounded-lg cursor-pointer hover:bg-emerald-100"
+                              >
+                                View Project
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
                   </div>
                 </div>
-              </div>
-            ))}
+              )}
+
+              {/* Separator */}
+              {/* {projects.filter((p) => p.status === "Active").length > 0 &&
+                projects.filter((p) => p.status === "Completed").length > 0 && (
+                  <div className="border-t-2 border-emerald-200 my-8"></div>
+                )} */}
+
+              {/* Completed Projects */}
+              {projects.filter((p) => p.status === "Completed").length > 0 && (
+                <div className="mt-20">
+                  <h3 className="text-lg font-semibold text-rose-700 mb-4">
+                    Completed Projects : {closedProjects}
+                  </h3>
+                  <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
+                    {projects
+                      .filter((p) => p.status === "Completed")
+                      .map((p, idx) => (
+                        <div
+                          key={p.id}
+                          data-aos="fade-up"
+                          data-aos-delay={`${idx * 100}`}
+                          className="
+              bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg
+              border border-emerald-100 hover:shadow-xl
+              transition-all overflow-hidden
+
+              flex flex-col
+            "
+                        >
+                          {/* Image */}
+                          <img
+                            src={p.image}
+                            alt={p.title}
+                            className="object- w-full h-62"
+                          />
+
+                          {/* Content */}
+                          <div className="p-4 flex flex-col">
+                            {/* title + status */}
+                            <div className="flex justify-between items-start mb-4">
+                              <h3 className="text-xl font-bold text-gray-900">
+                                {p.title}
+                              </h3>
+
+                              <span
+                                className={`${
+                                  p.status === "Completed"
+                                    ? "bg-rose-100 text-rose-700"
+                                    : "bg-emerald-100 text-emerald-700"
+                                } text-sm font-semibold px-3 py-1 rounded-full`}
+                              >
+                                {p.status}
+                              </span>
+                            </div>
+
+                            {/* location + description */}
+                            <p className="text-gray-600 text-sm mb-2 flex items-center gap-1">
+                              <CiLocationOn size={20} /> {p.location}
+                            </p>
+
+                            <p className="text-gray-700 text-sm leading-relaxed mb-4 flex-1">
+                              {p.description}
+                            </p>
+
+                            {/* investment + button */}
+                            <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+                              <div>
+                                <div className="flex items-center gap-2">
+                                  {/* <TrendingUp className="w-4 h-4 text-emerald-600" /> */}
+                                  <p className="font-semibold text-emerald-700">
+                                    Investment on Project
+                                  </p>
+                                </div>
+                                <p className="font-bold text-2xl">
+                                  ${p.investment.toLocaleString()}
+                                </p>
+                              </div>
+
+                              <button
+                                onClick={() =>
+                                  router.push(`/investments/projects/${p.id}`)
+                                }
+                                className="inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 font-semibold transition border border-green-300 px-4 py-3 rounded-lg cursor-pointer hover:bg-emerald-100"
+                              >
+                                View Project
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

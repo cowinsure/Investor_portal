@@ -42,7 +42,7 @@ const FeaturesSection = () => {
       <div>
         <FiCheckCircle
           className="absolute top-0 -left-10 md:-left-20 bg-blend-multiply text-green-200/30 rotate-0"
-          size={300}
+          size={500}
         />
       </div>
       <div className="max-w-[90%] md:max-w-[80%] lg:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-4 text-center">
