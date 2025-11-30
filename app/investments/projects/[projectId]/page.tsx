@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useParams, useRouter } from "next/navigation";
@@ -151,10 +152,16 @@ export default function ProjectDetailsPage() {
               },
             ],
             expense_details: [
-              { title: "Feed", date: "2024-10-02", amount: 1400 },
-              { title: "Medical", date: "2024-10-07", amount: 350 },
-              { title: "Maintenance", date: "2024-10-18", amount: 180 },
-              { title: "Labor", date: "2024-10-22", amount: 900 },
+              { title: "Cattle Purchase", amount: 900000 },
+              { title: "Feed", date: "2024-10-02", amount: 210765 },
+              { title: "Medical", date: "2024-10-07", amount: 20710 },
+              { title: "Premium", date: "2024-10-18", amount: 13550 },
+              {
+                title: "Identification Cost",
+                date: "2024-10-22",
+                amount: 2501,
+              },
+              { title: "Operational Cost", date: "2024-10-22", amount: 83000 },
             ],
           },
           {
@@ -255,10 +262,16 @@ export default function ProjectDetailsPage() {
               },
             ],
             expense_details: [
-              { title: "Feed", date: "2024-09-10", amount: 1500 },
-              { title: "Medical", date: "2024-09-16", amount: 310 },
-              { title: "Maintenance", date: "2024-09-21", amount: 200 },
-              { title: "Labor", date: "2024-09-29", amount: 850 },
+              { title: "Cattle Purchase", amount: 890000 },
+              { title: "Feed", date: "2024-10-02", amount: 224775 },
+              { title: "Medical", date: "2024-10-07", amount: 19905 },
+              { title: "Premium", date: "2024-10-18", amount: 12500 },
+              {
+                title: "Identification Cost",
+                date: "2024-10-22",
+                amount: 2501,
+              },
+              { title: "Operational Cost", date: "2024-10-22", amount: 83500 },
             ],
           },
           {
@@ -359,10 +372,16 @@ export default function ProjectDetailsPage() {
               },
             ],
             expense_details: [
-              { title: "Feed", date: "2024-10-03", amount: 1350 },
-              { title: "Medical", date: "2024-10-09", amount: 290 },
-              { title: "Maintenance", date: "2024-10-17", amount: 190 },
-              { title: "Labor", date: "2024-10-25", amount: 870 },
+              { title: "Cattle Purchase", amount: 892000 },
+              { title: "Feed", date: "2024-10-02", amount: 258000 },
+              { title: "Medical", date: "2024-10-07", amount: 19365 },
+              { title: "Premium", date: "2024-10-18", amount: 129925 },
+              {
+                title: "Identification Cost",
+                date: "2024-10-22",
+                amount: 2501,
+              },
+              { title: "Operational Cost", date: "2024-10-22", amount: 83500 },
             ],
           },
           {
@@ -464,10 +483,16 @@ export default function ProjectDetailsPage() {
               },
             ],
             expense_details: [
-              { title: "Feed", date: "2024-08-11", amount: 1450 },
-              { title: "Medical", date: "2024-08-17", amount: 340 },
-              { title: "Maintenance", date: "2024-08-21", amount: 175 },
-              { title: "Labor", date: "2024-08-28", amount: 910 },
+              { title: "Cattle Purchase", amount: 920000 },
+              { title: "Feed", date: "2024-10-02", amount: 239500 },
+              { title: "Medical", date: "2024-10-07", amount: 18490 },
+              { title: "Premium", date: "2024-10-18", amount: 14500 },
+              {
+                title: "Identification Cost",
+                date: "2024-10-22",
+                amount: 2501,
+              },
+              { title: "Operational Cost", date: "2024-10-22", amount: 83550 },
             ],
           },
           {
@@ -568,10 +593,16 @@ export default function ProjectDetailsPage() {
               },
             ],
             expense_details: [
-              { title: "Feed", date: "2024-07-09", amount: 1380 },
-              { title: "Medical", date: "2024-07-15", amount: 320 },
-              { title: "Maintenance", date: "2024-07-19", amount: 165 },
-              { title: "Labor", date: "2024-07-26", amount: 890 },
+              { title: "Cattle Purchase", amount: 880000 },
+              { title: "Feed", date: "2024-10-02", amount: 265600 },
+              { title: "Medical", date: "2024-10-07", amount: 19295 },
+              { title: "Premium", date: "2024-10-18", amount: 12500 },
+              {
+                title: "Identification Cost",
+                date: "2024-10-22",
+                amount: 2501,
+              },
+              { title: "Operational Cost", date: "2024-10-22", amount: 83510 },
             ],
           },
           {
@@ -672,10 +703,16 @@ export default function ProjectDetailsPage() {
               },
             ],
             expense_details: [
-              { title: "Feed", date: "2023-10-01", amount: 1300 },
-              { title: "Medical", date: "2023-10-05", amount: 350 },
-              { title: "Maintenance", date: "2023-10-15", amount: 180 },
-              { title: "Labor", date: "2023-10-20", amount: 900 },
+              { title: "Cattle Purchase", amount: 895000 },
+              { title: "Feed", date: "2024-10-02", amount: 246280 },
+              { title: "Medical", date: "2024-10-07", amount: 19280 },
+              { title: "Premium", date: "2024-10-18", amount: 12550 },
+              {
+                title: "Identification Cost",
+                date: "2024-10-22",
+                amount: 2501,
+              },
+              { title: "Operational Cost", date: "2024-10-22", amount: 83540 },
             ],
           },
         ],
@@ -786,10 +823,16 @@ export default function ProjectDetailsPage() {
               },
             ],
             expense_details: [
-              { title: "Feed", date: "2023-10-01", amount: 1250 },
-              { title: "Medical", date: "2023-10-05", amount: 320 },
-              { title: "Maintenance", date: "2023-10-15", amount: 170 },
-              { title: "Labor", date: "2023-10-20", amount: 850 },
+              { title: "Cattle Purchase", amount: 877000 },
+              { title: "Feed", date: "2024-10-02", amount: 295200 },
+              { title: "Medical", date: "2024-10-07", amount: 18610 },
+              { title: "Premium", date: "2024-10-18", amount: 12500 },
+              {
+                title: "Identification Cost",
+                date: "2024-10-22",
+                amount: 2501,
+              },
+              { title: "Operational Cost", date: "2024-10-22", amount: 83550 },
             ],
           },
           {
@@ -890,10 +933,16 @@ export default function ProjectDetailsPage() {
               },
             ],
             expense_details: [
-              { title: "Feed", date: "2023-10-01", amount: 1500 },
-              { title: "Medical", date: "2023-10-05", amount: 400 },
-              { title: "Maintenance", date: "2023-10-15", amount: 210 },
-              { title: "Labor", date: "2023-10-20", amount: 950 },
+              { title: "Cattle Purchase", amount: 895000 },
+              { title: "Feed", date: "2024-10-02", amount: 249165 },
+              { title: "Medical", date: "2024-10-07", amount: 20350 },
+              { title: "Premium", date: "2024-10-18", amount: 13500 },
+              {
+                title: "Identification Cost",
+                date: "2024-10-22",
+                amount: 2501,
+              },
+              { title: "Operational Cost", date: "2024-10-22", amount: 83580 },
             ],
           },
           {
@@ -995,10 +1044,16 @@ export default function ProjectDetailsPage() {
               },
             ],
             expense_details: [
-              { title: "Feed", date: "2023-10-01", amount: 1400 },
-              { title: "Medical", date: "2023-10-05", amount: 360 },
-              { title: "Maintenance", date: "2023-10-15", amount: 200 },
-              { title: "Labor", date: "2023-10-20", amount: 920 },
+              { title: "Cattle Purchase", amount: 945000 },
+              { title: "Feed", date: "2024-10-02", amount: 245964 },
+              { title: "Medical", date: "2024-10-07", amount: 19263 },
+              { title: "Premium", date: "2024-10-18", amount: 14500 },
+              {
+                title: "Identification Cost",
+                date: "2024-10-22",
+                amount: 2501,
+              },
+              { title: "Operational Cost", date: "2024-10-22", amount: 83550 },
             ],
           },
           {
@@ -1099,10 +1154,16 @@ export default function ProjectDetailsPage() {
               },
             ],
             expense_details: [
-              { title: "Feed", date: "2023-10-01", amount: 1550 },
-              { title: "Medical", date: "2023-10-05", amount: 420 },
-              { title: "Maintenance", date: "2023-10-15", amount: 225 },
-              { title: "Labor", date: "2023-10-20", amount: 980 },
+              { title: "Cattle Purchase", amount: 875000 },
+              { title: "Feed", date: "2024-10-02", amount: 244524 },
+              { title: "Medical", date: "2024-10-07", amount: 19560 },
+              { title: "Premium", date: "2024-10-18", amount: 12500 },
+              {
+                title: "Identification Cost",
+                date: "2024-10-22",
+                amount: 2501,
+              },
+              { title: "Operational Cost", date: "2024-10-22", amount: 83540 },
             ],
           },
           {
@@ -1203,10 +1264,16 @@ export default function ProjectDetailsPage() {
               },
             ],
             expense_details: [
-              { title: "Feed", date: "2025-03-05", amount: 1480 },
-              { title: "Medical", date: "2025-03-10", amount: 360 },
-              { title: "Maintenance", date: "2025-03-18", amount: 195 },
-              { title: "Labor", date: "2025-03-25", amount: 920 },
+              { title: "Cattle Purchase", amount: 935000 },
+              { title: "Feed", date: "2024-10-02", amount: 247778 },
+              { title: "Medical", date: "2024-10-07", amount: 20248 },
+              { title: "Premium", date: "2024-10-18", amount: 14448 },
+              {
+                title: "Identification Cost",
+                date: "2024-10-22",
+                amount: 2501,
+              },
+              { title: "Operational Cost", date: "2024-10-22", amount: 83670 },
             ],
           },
           {
@@ -1307,10 +1374,16 @@ export default function ProjectDetailsPage() {
               },
             ],
             expense_details: [
-              { title: "Feed", date: "2025-02-10", amount: 1520 },
-              { title: "Medical", date: "2025-02-15", amount: 380 },
-              { title: "Maintenance", date: "2025-02-20", amount: 210 },
-              { title: "Labor", date: "2025-02-26", amount: 940 },
+              { title: "Cattle Purchase", amount: 920000 },
+              { title: "Feed", date: "2024-10-02", amount: 227820 },
+              { title: "Medical", date: "2024-10-07", amount: 19550 },
+              { title: "Premium", date: "2024-10-18", amount: 13800 },
+              {
+                title: "Identification Cost",
+                date: "2024-10-22",
+                amount: 2501,
+              },
+              { title: "Operational Cost", date: "2024-10-22", amount: 83550 },
             ],
           },
         ],
@@ -1421,10 +1494,16 @@ export default function ProjectDetailsPage() {
               },
             ],
             expense_details: [
-              { title: "Feed", date: "2025-05-02", amount: 1320 },
-              { title: "Medical", date: "2025-05-08", amount: 300 },
-              { title: "Maintenance", date: "2025-05-14", amount: 180 },
-              { title: "Labor", date: "2025-05-22", amount: 860 },
+              { title: "Cattle Purchase", amount: 955000 },
+              { title: "Feed", date: "2024-10-02", amount: 250515 },
+              { title: "Medical", date: "2024-10-07", amount: 18780 },
+              { title: "Premium", date: "2024-10-18", amount: 14500 },
+              {
+                title: "Identification Cost",
+                date: "2024-10-22",
+                amount: 2501,
+              },
+              { title: "Operational Cost", date: "2024-10-22", amount: 83540 },
             ],
           },
           {
@@ -1525,10 +1604,16 @@ export default function ProjectDetailsPage() {
               },
             ],
             expense_details: [
-              { title: "Feed", date: "2025-06-05", amount: 1450 },
-              { title: "Medical", date: "2025-06-11", amount: 340 },
-              { title: "Maintenance", date: "2025-06-17", amount: 190 },
-              { title: "Labor", date: "2025-06-24", amount: 910 },
+              { title: "Cattle Purchase", amount: 880000 },
+              { title: "Feed", date: "2024-10-02", amount: 260300 },
+              { title: "Medical", date: "2024-10-07", amount: 19700 },
+              { title: "Premium", date: "2024-10-18", amount: 13000 },
+              {
+                title: "Identification Cost",
+                date: "2024-10-22",
+                amount: 2501,
+              },
+              { title: "Operational Cost", date: "2024-10-22", amount: 83550 },
             ],
           },
           {
@@ -1630,10 +1715,16 @@ export default function ProjectDetailsPage() {
               },
             ],
             expense_details: [
-              { title: "Feed", date: "2025-01-03", amount: 1380 },
-              { title: "Medical", date: "2025-01-09", amount: 320 },
-              { title: "Maintenance", date: "2025-01-15", amount: 175 },
-              { title: "Labor", date: "2025-01-22", amount: 880 },
+              { title: "Cattle Purchase", amount: 892000 },
+              { title: "Feed", date: "2024-10-02", amount: 272030 },
+              { title: "Medical", date: "2024-10-07", amount: 20978 },
+              { title: "Premium", date: "2024-10-18", amount: 13500 },
+              {
+                title: "Identification Cost",
+                date: "2024-10-22",
+                amount: 2501,
+              },
+              { title: "Operational Cost", date: "2024-10-22", amount: 83500 },
             ],
           },
           {
@@ -1735,10 +1826,16 @@ export default function ProjectDetailsPage() {
               },
             ],
             expense_details: [
-              { title: "Feed", date: "2025-07-01", amount: 1550 },
-              { title: "Medical", date: "2025-07-07", amount: 400 },
-              { title: "Maintenance", date: "2025-07-13", amount: 220 },
-              { title: "Labor", date: "2025-07-20", amount: 960 },
+              { title: "Cattle Purchase", amount: 890000 },
+              { title: "Feed", date: "2024-10-02", amount: 235780 },
+              { title: "Medical", date: "2024-10-07", amount: 19515 },
+              { title: "Premium", date: "2024-10-18", amount: 13500 },
+              {
+                title: "Identification Cost",
+                date: "2024-10-22",
+                amount: 2501,
+              },
+              { title: "Operational Cost", date: "2024-10-22", amount: 83550 },
             ],
           },
         ],
@@ -1849,10 +1946,16 @@ export default function ProjectDetailsPage() {
               },
             ],
             expense_details: [
-              { title: "Feed", date: "2025-08-08", amount: 1350 },
-              { title: "Medical", date: "2025-08-14", amount: 310 },
-              { title: "Maintenance", date: "2025-08-19", amount: 185 },
-              { title: "Labor", date: "2025-08-26", amount: 870 },
+              { title: "Cattle Purchase", amount: 950000 },
+              { title: "Feed", date: "2024-10-02", amount: 235280 },
+              { title: "Medical", date: "2024-10-07", amount: 19195 },
+              { title: "Premium", date: "2024-10-18", amount: 14500 },
+              {
+                title: "Identification Cost",
+                date: "2024-10-22",
+                amount: 2501,
+              },
+              { title: "Operational Cost", date: "2024-10-22", amount: 83800 },
             ],
           },
           {
@@ -1954,10 +2057,16 @@ export default function ProjectDetailsPage() {
               },
             ],
             expense_details: [
-              { title: "Feed", date: "2025-09-01", amount: 1580 },
-              { title: "Medical", date: "2025-09-06", amount: 410 },
-              { title: "Maintenance", date: "2025-09-12", amount: 230 },
-              { title: "Labor", date: "2025-09-19", amount: 990 },
+              { title: "Cattle Purchase", amount: 890000 },
+              { title: "Feed", date: "2024-10-02", amount: 236952 },
+              { title: "Medical", date: "2024-10-07", amount: 20290 },
+              { title: "Premium", date: "2024-10-18", amount: 13500 },
+              {
+                title: "Identification Cost",
+                date: "2024-10-22",
+                amount: 2501,
+              },
+              { title: "Operational Cost", date: "2024-10-22", amount: 83300 },
             ],
           },
           {
@@ -2059,10 +2168,16 @@ export default function ProjectDetailsPage() {
               },
             ],
             expense_details: [
-              { title: "Feed", date: "2025-10-15", amount: 1420 },
-              { title: "Medical", date: "2025-10-20", amount: 350 },
-              { title: "Maintenance", date: "2025-10-25", amount: 200 },
-              { title: "Labor", date: "2025-10-29", amount: 900 },
+              { title: "Cattle Purchase", amount: 935000 },
+              { title: "Feed", date: "2024-10-02", amount: 251500 },
+              { title: "Medical", date: "2024-10-07", amount: 19394 },
+              { title: "Premium", date: "2024-10-18", amount: 14000 },
+              {
+                title: "Identification Cost",
+                date: "2024-10-22",
+                amount: 2501,
+              },
+              { title: "Operational Cost", date: "2024-10-22", amount: 83500 },
             ],
           },
           {
@@ -2163,10 +2278,16 @@ export default function ProjectDetailsPage() {
               },
             ],
             expense_details: [
-              { title: "Feed", date: "2025-04-01", amount: 1400 },
-              { title: "Medical", date: "2025-04-07", amount: 330 },
-              { title: "Maintenance", date: "2025-04-13", amount: 180 },
-              { title: "Labor", date: "2025-04-20", amount: 890 },
+              { title: "Cattle Purchase", amount: 950000 },
+              { title: "Feed", date: "2024-10-02", amount: 227900 },
+              { title: "Medical", date: "2024-10-07", amount: 19600 },
+              { title: "Premium", date: "2024-10-18", amount: 14500 },
+              {
+                title: "Identification Cost",
+                date: "2024-10-22",
+                amount: 2501,
+              },
+              { title: "Operational Cost", date: "2024-10-22", amount: 83400 },
             ],
           },
         ],
@@ -2496,232 +2617,6 @@ export default function ProjectDetailsPage() {
                     </div>
                   </div>
                 )}
-              </div>
-            </div>
-          </>
-        )}
-
-        {project.status === "Completed" && (
-          <>
-            {/* Farmers Table */}
-            <div
-              data-aos="fade-up"
-              data-aos-delay="100"
-              className="h-screen mt-16"
-            >
-              <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2 mb-5">
-                <PiSolarRoofBold className="text-emerald-600 -mb-1" size={30} /> Sheds
-              </h2>
-
-              {/* Dynamic Shed Tabs */}
-              <div data-aos="fade-up" data-aos-delay="400" className="flex-1">
-                <div className=" rounded-2xl overflow-hidden">
-                  {/* Tab Headers */}
-                  <div className="relative w-full mx-auto">
-                    <div className="relative flex bg-emerald-100/80 p-1 rounded-2xl border border-emerald-400/30 backdrop-blur-lg overflow-x-auto">
-                      {/* Sliding Highlight */}
-                      <div
-                        className="absolute top-1 bottom-1 bg-emerald-950/80 rounded-xl shadow-inner transition-transform duration-300 ease-out"
-                        style={{
-                          width: `${100 / projectData.sheds.length}%`,
-                          transform: `translateX(${
-                            projectData.sheds.findIndex(
-                              (shed) => shed.id === activeShedId
-                            ) * 100
-                          }%)`,
-                        }}
-                      />
-
-                      {/* Dynamic Shed Tabs */}
-                      {projectData.sheds.map((shed) => (
-                        <button
-                          key={shed.id}
-                          onClick={() => {
-                            setActiveShedId(shed.id);
-                            setCurrentPage(1); // Reset to first page when switching sheds
-                          }}
-                          className={`relative z-10 flex-1 px-3 py-3 rounded-full font-semibold flex items-center justify-center gap-1 transition-all cursor-pointer text-xs sm:text-sm whitespace-nowrap ${
-                            activeShedId === shed.id
-                              ? "text-white"
-                              : "text-emerald-800 hover:text-emerald-950 hover:scale-105"
-                          }`}
-                        >
-                          <Package className="w-4 h-4" />
-                          <span className="truncate">{shed.shed_name}</span>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Tab Content - Farmers Table for Selected Shed */}
-                  <div className="mt-5 bg-green-50 rounded-2xl drop-shadow-2xl border border-emerald-400/50">
-                    <div data-aos="fade-in" data-aos-delay="200">
-                      <div className="overflow-x-auto rounded-2xl">
-                        <table className="w-full">
-                          <thead className="bg-emerald-950/80 border-b border-emerald-100">
-                            <tr>
-                              <th className="px-6 py-4 text-left text-sm font-semibold text-emerald-100">
-                                Name
-                              </th>
-                              <th className="px-6 py-4 text-left text-sm font-semibold text-emerald-100">
-                                Mobile
-                              </th>
-                              <th className="px-6 py-4 text-left text-sm font-semibold text-emerald-100">
-                                Location
-                              </th>
-                              <th className="px-6 py-4 text-left text-sm font-semibold text-emerald-100">
-                                Village
-                              </th>
-                              <th className="px-6 py-4 text-left text-sm font-semibold text-emerald-100">
-                                Join Date
-                              </th>
-                              <th className="px-6 py-4 text-left text-sm font-semibold text-emerald-100"></th>
-                            </tr>
-                          </thead>
-                          <tbody className="divide-y divide-emerald-50">
-                            {(() => {
-                              const activeShed = projectData.sheds.find(
-                                (shed) => shed.id === activeShedId
-                              );
-                              const shedFarmers = activeShed?.farmers || [];
-                              const startIndex =
-                                (currentPage - 1) * itemsPerPage;
-                              const endIndex = startIndex + itemsPerPage;
-                              const currentFarmers = shedFarmers.slice(
-                                startIndex,
-                                endIndex
-                              );
-
-                              return currentFarmers.map((farmer, idx) => (
-                                <tr
-                                  key={farmer.user_id}
-                                  data-aos="fade-up"
-                                  data-aos-delay={`${500 + idx * 50}`}
-                                  className="hover:bg-emerald-200/30 transition-colors cursor-pointer group"
-                                  onClick={() =>
-                                    handleFarmerClick(farmer.user_id)
-                                  }
-                                >
-                                  <td className="px-6 py-4">
-                                    <div className="flex items-center gap-3">
-                                      <div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-700 font-semibold text-sm">
-                                        {farmer.initials}
-                                      </div>
-                                      <span className="font-medium text-gray-900">
-                                        {farmer.farmer_name}
-                                      </span>
-                                    </div>
-                                  </td>
-                                  <td className="px-6 py-4 text-gray-700">
-                                    {farmer.mobile_number}
-                                  </td>
-                                  <td className="px-6 py-4 text-gray-700">
-                                    {farmer.location}
-                                  </td>
-                                  <td
-                                    className="px-6 py-4 text-gray-700 max-w-xs truncate"
-                                    title={farmer.village}
-                                  >
-                                    {farmer.village}
-                                  </td>
-                                  <td className="px-6 py-4 text-gray-700">
-                                    {farmer.join_date}
-                                  </td>
-                                  <td className="px-6 py-4 text-gray-700">
-                                    <ChevronRight className="w-5 h-5 text-emerald-600 group-hover:scale-125" />
-                                  </td>
-                                </tr>
-                              ));
-                            })()}
-                          </tbody>
-                        </table>
-                      </div>
-
-                      {/* Pagination for Shed Farmers */}
-                      {(() => {
-                        const activeShed = projectData.sheds.find(
-                          (shed) => shed.id === activeShedId
-                        );
-                        const shedFarmers = activeShed?.farmers || [];
-                        const totalPages = Math.ceil(
-                          shedFarmers.length / itemsPerPage
-                        );
-
-                        return (
-                          totalPages > 1 && (
-                            <div className="px-6 py-4 bg-emerald-50/50 border-t border-emerald-100">
-                              <div className="flex items-center justify-between">
-                                <div className="text-sm text-gray-600">
-                                  Showing {(currentPage - 1) * itemsPerPage + 1}{" "}
-                                  to{" "}
-                                  {Math.min(
-                                    currentPage * itemsPerPage,
-                                    shedFarmers.length
-                                  )}{" "}
-                                  of {shedFarmers.length} farmers
-                                </div>
-                                <div className="flex items-center gap-2">
-                                  <button
-                                    onClick={() => setCurrentPage(1)}
-                                    disabled={currentPage === 1}
-                                    className="cursor-pointer p-2 rounded-lg hover:bg-emerald-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                                  >
-                                    <ChevronsLeft className="w-4 h-4 text-emerald-600" />
-                                  </button>
-                                  <button
-                                    onClick={() =>
-                                      setCurrentPage(currentPage - 1)
-                                    }
-                                    disabled={currentPage === 1}
-                                    className="cursor-pointer p-2 rounded-lg hover:bg-emerald-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                                  >
-                                    <ChevronLeft className="w-4 h-4 text-emerald-600" />
-                                  </button>
-
-                                  <div className="flex items-center gap-1">
-                                    {Array.from(
-                                      { length: totalPages },
-                                      (_, i) => i + 1
-                                    ).map((page) => (
-                                      <button
-                                        key={page}
-                                        onClick={() => setCurrentPage(page)}
-                                        className={`cursor-pointer px-3 py-1 rounded-lg text-sm font-medium transition-colors ${
-                                          currentPage === page
-                                            ? "bg-emerald-600 text-white"
-                                            : "hover:bg-emerald-100 text-emerald-700"
-                                        }`}
-                                      >
-                                        {page}
-                                      </button>
-                                    ))}
-                                  </div>
-
-                                  <button
-                                    onClick={() =>
-                                      setCurrentPage(currentPage + 1)
-                                    }
-                                    disabled={currentPage === totalPages}
-                                    className="cursor-pointer p-2 rounded-lg hover:bg-emerald-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                                  >
-                                    <ChevronRight className="w-4 h-4 text-emerald-600" />
-                                  </button>
-                                  <button
-                                    onClick={() => setCurrentPage(totalPages)}
-                                    disabled={currentPage === totalPages}
-                                    className="cursor-pointer p-2 rounded-lg hover:bg-emerald-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                                  >
-                                    <ChevronsRight className="w-4 h-4 text-emerald-600" />
-                                  </button>
-                                </div>
-                              </div>
-                            </div>
-                          )
-                        );
-                      })()}
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </>

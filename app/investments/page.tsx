@@ -7,6 +7,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { CiLocationOn } from "react-icons/ci";
 import { DollarSign, FolderKanban, Layers, FolderCheck } from "lucide-react";
 import { useRouter } from "next/navigation";
+import useApi from "@/hooks/useApi";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 type StatsValues = {
@@ -16,7 +17,18 @@ type StatsValues = {
   closedProjects: number;
 };
 
-const projectsData = [
+interface Project {
+  project_id: number;
+  image: string;
+  project_name: string;
+  is_active: boolean;
+  project_location: string;
+  investments: {
+    investment_amount: number;
+  }[];
+}
+
+const StaticProjectsData = [
   {
     id: 1,
     title: "Green Valley Dairy Initiative",
@@ -50,17 +62,42 @@ const projectsData = [
 ];
 
 export default function MyInvestments() {
+  const { get } = useApi();
   const router = useRouter();
-  const [projects] = useState(projectsData);
+  const [StatProjects] = useState(StaticProjectsData);
+  const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
     AOS.init();
   }, []);
 
-  const totalInvested = projects.reduce((sum, p) => sum + p.investment, 0);
-  const activeProjects = projects.filter((p) => p.status === "Active").length;
-  const closedProjects = projects.filter((p) => p.status !== "Active").length;
-  const activeProjectsObj = projects.filter((p) => p.status === "Active");
+  useEffect(() => {
+    // Fetch Project Data
+    try {
+      const fetchProjects = async () => {
+        const res = await get(
+          "/coms/project-service/?page_size=10&start_record=1&project_id=-1"
+        );
+        console.log(res);
+        if (res.status === "success") {
+          setProjects(res.data);
+        }
+      };
+
+      fetchProjects();
+    } catch (error) {
+      console.log(error);
+    }
+  }, [get]);
+
+  const totalInvested = StatProjects.reduce((sum, p) => sum + p.investment, 0);
+  const activeProjects = StatProjects.filter(
+    (p) => p.status === "Active"
+  ).length;
+  const closedProjects = StatProjects.filter(
+    (p) => p.status !== "Active"
+  ).length;
+  const activeProjectsObj = StatProjects.filter((p) => p.status === "Active");
 
   const statsValues: StatsValues = {
     currentInvested: activeProjectsObj.reduce(
@@ -193,88 +230,84 @@ export default function MyInvestments() {
 
             <div className="border p-6 rounded-2xl border-emerald-300">
               {/* Active Projects */}
-              {projects.filter((p) => p.status === "Active").length > 0 && (
+              {projects.length > 0 && (
                 <div className="mb-8">
                   <h3 className="text-lg font-semibold text-emerald-700 mb-4">
-                    Active Projects : {activeProjects}
+                    Active Projects : {projects.length}
                   </h3>
                   <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
-                    {projects
-                      .filter((p) => p.status === "Active")
-                      .map((p, idx) => (
-                        <div
-                          key={p.id}
-                          data-aos="fade-up"
-                          data-aos-delay={`${idx * 100}`}
-                          className="
+                    {projects.map((p, idx) => (
+                      <div
+                        key={p.project_id}
+                        data-aos="fade-up"
+                        data-aos-delay={`${idx * 100}`}
+                        className="
               bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg
               border border-emerald-100 hover:shadow-xl
               transition-all overflow-hidden
 
               flex flex-col
             "
-                        >
-                          {/* Image */}
-                          <img
-                            src={p.image}
-                            alt={p.title}
-                            className="object- w-full h-62"
-                          />
+                      >
+                        <img
+                          src={p.image}
+                          alt={p.project_name}
+                          className="object- w-full h-62"
+                        />
 
-                          {/* Content */}
-                          <div className="p-4 flex flex-col">
-                            {/* title + status */}
-                            <div className="flex justify-between items-start mb-4">
-                              <h3 className="text-xl font-bold text-gray-900">
-                                {p.title}
-                              </h3>
+                        <div className="p-4 flex flex-col">
+                          <div className="flex justify-between items-start mb-4">
+                            <h3 className="text-xl font-bold text-gray-900">
+                              {p.project_name}
+                            </h3>
 
-                              <span
-                                className={`${
-                                  p.status === "Completed"
-                                    ? "bg-rose-100 text-rose-700"
-                                    : "bg-emerald-100 text-emerald-700"
-                                } text-sm font-semibold px-3 py-1 rounded-full`}
-                              >
-                                {p.status}
-                              </span>
-                            </div>
+                            <span
+                              className={`${
+                                p.is_active === false
+                                  ? "bg-rose-100 text-rose-700"
+                                  : "bg-emerald-100 text-emerald-700"
+                              } text-sm font-semibold px-3 py-1 rounded-full`}
+                            >
+                              {p.is_active === true ? "Active" : "Completed"}
+                            </span>
+                          </div>
 
-                            {/* location + description */}
-                            <p className="text-gray-600 text-sm mb-2 flex items-center gap-1">
-                              <CiLocationOn size={20} /> {p.location}
-                            </p>
+                          <p className="text-gray-600 text-sm mb-2 flex items-center gap-1">
+                            <CiLocationOn size={20} /> {p.project_location}
+                          </p>
+                          {/* 
+                          <p className="text-gray-700 text-sm leading-relaxed mb-4 flex-1">
+                            {p.description}
+                          </p> */}
 
-                            <p className="text-gray-700 text-sm leading-relaxed mb-4 flex-1">
-                              {p.description}
-                            </p>
-
-                            {/* investment + button */}
-                            <div className="flex items-center justify-between pt-4 border-t border-gray-200">
-                              <div>
-                                <div className="flex items-center gap-2">
-                                  {/* <TrendingUp className="w-4 h-4 text-emerald-600" /> */}
-                                  <p className="font-semibold text-emerald-700">
-                                    Investment on Project
-                                  </p>
-                                </div>
-                                <p className="font-bold text-2xl">
-                                  ${p.investment.toLocaleString()}
+                          <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+                            <div>
+                              <div className="flex items-center gap-2">
+                                <p className="font-semibold text-emerald-700">
+                                  Investment on Project
                                 </p>
                               </div>
-
-                              <button
-                                onClick={() =>
-                                  router.push(`/investments/projects/${p.id}`)
-                                }
-                                className="inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 font-semibold transition border border-green-300 px-4 py-3 rounded-lg cursor-pointer hover:bg-emerald-100"
-                              >
-                                View Project
-                              </button>
+                              <p className="font-bold text-2xl">
+                                $
+                                {p?.investments?.[0]?.investment_amount?.toLocaleString() ??
+                                  "0"}
+                              </p>
                             </div>
+
+                            <button
+                              onClick={() =>
+                                router.push(
+                                  `/investments/projects/${p.project_id}`
+                                )
+                              }
+                              className="inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 font-semibold transition border border-green-300 px-4 py-3 rounded-lg cursor-pointer hover:bg-emerald-100"
+                            >
+                              View Project
+                            </button>
                           </div>
                         </div>
-                      ))}
+                      </div>
+                    ))}
                   </div>
                 </div>
               )}
@@ -285,16 +318,16 @@ export default function MyInvestments() {
                   <div className="border-t-2 border-emerald-200 my-8"></div>
                 )} */}
 
-              {/* Completed Projects */}
-              {projects.filter((p) => p.status === "Completed").length > 0 && (
+              {/* Completed Static Projects */}
+              {StatProjects.filter((p) => p.status === "Completed").length >
+                0 && (
                 <div className="mt-20">
                   <h3 className="text-lg font-semibold text-rose-700 mb-4">
                     Completed Projects : {closedProjects}
                   </h3>
                   <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
-                    {projects
-                      .filter((p) => p.status === "Completed")
-                      .map((p, idx) => (
+                    {StatProjects.filter((p) => p.status === "Completed").map(
+                      (p, idx) => (
                         <div
                           key={p.id}
                           data-aos="fade-up"
@@ -358,7 +391,9 @@ export default function MyInvestments() {
 
                               <button
                                 onClick={() =>
-                                  router.push(`/investments/projects/${p.id}`)
+                                  router.push(
+                                    `/investments/completed-projects/${p.id}`
+                                  )
                                 }
                                 className="inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 font-semibold transition border border-green-300 px-4 py-3 rounded-lg cursor-pointer hover:bg-emerald-100"
                               >
@@ -367,7 +402,8 @@ export default function MyInvestments() {
                             </div>
                           </div>
                         </div>
-                      ))}
+                      )
+                    )}
                   </div>
                 </div>
               )}
