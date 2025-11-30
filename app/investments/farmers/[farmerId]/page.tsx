@@ -7,15 +7,43 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { ArrowLeft, Calendar, Package, Receipt, User } from "lucide-react";
 import { FaLocationDot } from "react-icons/fa6";
+import useApi from "../../../../hooks/useApi";
 
 export default function FarmerDetailsPage() {
-  const { farmerId } = useParams();
-  const router = useRouter();
-  const [activeTab, setActiveTab] = useState("livestock");
+   const { farmerId } = useParams();
+   console.log(farmerId);
+
+   const router = useRouter();
+   const { get, loading } = useApi();
+   const [activeTab, setActiveTab] = useState("livestock");
+   const [livestock, setLivestock] = useState<any[]>([]);
+   const [expenses, setExpenses] = useState<any[]>([]);
 
   useEffect(() => {
     AOS.init();
   }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Fetch livestock
+        const livestockData = await get(`lms/assets-service/?page_size=10&start_record=1&asset_id=-1&by_user_id=${farmerId}`);
+        if (livestockData.status === 'success') {
+          setLivestock(livestockData.data.list || []);
+        }
+
+        // Fetch expenses
+        const expensesData = await get(`gls/income-expense-breakdown-service/?start_record=1&page_size=10&by_user_id=${farmerId}`);
+        if (expensesData.status === 'success') {
+          setExpenses(expensesData.data.list || []);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, [get, farmerId]);
 
   // Dummy data — replace with real API call
   const [farmer] = useState({
@@ -193,7 +221,7 @@ export default function FarmerDetailsPage() {
                               Age
                             </th>
                             <th className="px-4 py-3 text-left text-sm font-semibold text-emerald-100">
-                              Milk Production
+                              Weight
                             </th>
                             <th className="px-4 py-3 text-left text-sm font-semibold text-emerald-100">
                               Status
@@ -201,38 +229,46 @@ export default function FarmerDetailsPage() {
                           </tr>
                         </thead>
                         <tbody className="divide-y divide-emerald-200 px-5">
-                          {farmer.livestock.map((cow, idx) => (
-                            <tr
-                              key={cow.id}
-                              data-aos="fade-up"
-                              data-aos-delay={`${300 + idx * 100}`}
-                              className="hover:bg-emerald-50/30 transition-colors"
-                            >
-                              <td className="px-4 py-4 font-semibold text-gray-900">
-                                {cow.id}
-                              </td>
-                              <td className="px-4 py-4 text-gray-700">
-                                {cow.breed}
-                              </td>
-                              <td className="px-4 py-4 text-gray-700">
-                                {cow.age}
-                              </td>
-                              <td className="px-4 py-4 text-gray-700">
-                                {cow.milk}
-                              </td>
-                              <td className="px-4 py-4">
-                                <span
-                                  className={`px-3 py-1 text-xs rounded-full font-medium ${
-                                    cow.status === "Healthy"
-                                      ? "bg-emerald-100 text-emerald-700"
-                                      : "bg-red-100 text-red-700"
-                                  }`}
-                                >
-                                  {cow.status}
-                                </span>
+                          {livestock.length === 0 && !loading && (
+                            <tr>
+                              <td colSpan={5} className="px-4 py-8 text-center text-gray-500">
+                                No livestock found
                               </td>
                             </tr>
-                          ))}
+                          )}
+                          {livestock.length > 0 &&
+                            livestock.map((cow, idx) => (
+                              <tr
+                                key={cow.reference_id}
+                                data-aos="fade-up"
+                                data-aos-delay={`${300 + idx * 100}`}
+                                className="hover:bg-emerald-50/30 transition-colors"
+                              >
+                                <td className="px-4 py-4 font-semibold text-gray-900">
+                                  {cow.reference_id}
+                                </td>
+                                <td className="px-4 py-4 text-gray-700">
+                                  {cow.breed}
+                                </td>
+                                <td className="px-4 py-4 text-gray-700">
+                                  {cow.age_in_months} months
+                                </td>
+                                <td className="px-4 py-4 text-gray-700">
+                                  {cow.weight_kg} kg
+                                </td>
+                                <td className="px-4 py-4">
+                                  <span
+                                    className={`px-3 py-1 text-xs rounded-full font-medium ${
+                                      cow.current_status === "Active"
+                                        ? "bg-emerald-100 text-emerald-700"
+                                        : "bg-red-100 text-red-700"
+                                    }`}
+                                  >
+                                    {cow.current_status}
+                                  </span>
+                                </td>
+                              </tr>
+                            ))}
                         </tbody>
                       </table>
                     </div>
@@ -260,26 +296,34 @@ export default function FarmerDetailsPage() {
                           </tr>
                         </thead>
                         <tbody className="divide-y divide-emerald-200">
-                          {farmer.expenses.map((expense, idx) => (
-                            <tr
-                              key={idx}
-                              data-aos="fade-up"
-                              data-aos-delay={`${300 + idx * 100}`}
-                              className="hover:bg-emerald-50/30 transition-colors"
-                            >
-                              <td className="px-4 py-4 font-semibold text-gray-900">
-                                {expense.title}
-                              </td>
-                              <td className="px-4 py-4 text-gray-700">
-                                {expense.date}
-                              </td>
-                              <td className="px-4 py-4">
-                                <span className="font-semibold text-red-600">
-                                  ${Math.abs(expense.amount)}
-                                </span>
+                          {expenses.length === 0 && !loading && (
+                            <tr>
+                              <td colSpan={3} className="px-4 py-8 text-center text-gray-500">
+                                No expenses found
                               </td>
                             </tr>
-                          ))}
+                          )}
+                          {expenses.length > 0 &&
+                            expenses.map((expense, idx) => (
+                              <tr
+                                key={idx}
+                                data-aos="fade-up"
+                                data-aos-delay={`${300 + idx * 100}`}
+                                className="hover:bg-emerald-50/30 transition-colors"
+                              >
+                                <td className="px-4 py-4 font-semibold text-gray-900">
+                                  {expense.txn_head}
+                                </td>
+                                <td className="px-4 py-4 text-gray-700">
+                                  N/A
+                                </td>
+                                <td className="px-4 py-4">
+                                  <span className="font-semibold text-red-600">
+                                    ${expense.amount}
+                                  </span>
+                                </td>
+                              </tr>
+                            ))}
                         </tbody>
                       </table>
                     </div>

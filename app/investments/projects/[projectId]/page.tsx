@@ -2,7 +2,7 @@
 "use client";
 
 import { useParams, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Image from "next/image";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -19,17 +19,44 @@ import {
 } from "lucide-react";
 import image from "../../../../public/dairy_farm.jpg";
 import { PiSolarRoofBold } from "react-icons/pi";
+import { useAuth } from "../../../../core/context/AuthContext";
+import useApi from "../../../../hooks/useApi";
+import { log } from "console";
 
 export default function ProjectDetailsPage() {
-  const { projectId } = useParams();
-  const router = useRouter();
+   const { projectId } = useParams();
+   console.log(projectId);
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 8;
+   const router = useRouter();
+   const { accessToken } = useAuth();
+   const { get, loading, error } = useApi();
+
+   const [farmers, setFarmers] = useState<any[]>([]);
+   const [currentPage, setCurrentPage] = useState(1);
+   const itemsPerPage = 8;
+   console.log(farmers);
+   
 
   useEffect(() => {
     AOS.init();
   }, []);
+
+  useEffect(() => {
+    const fetchFarmers = async () => {
+      try {
+        const data = await get('ims/farmer-service/?start_record=1');
+        if (data.status === 'success') {
+          // Filter farmers by project ID
+          const filteredFarmers = data.data.filter((farmer: any) => farmer.project_id.toString() === projectId);
+          setFarmers(filteredFarmers);
+        }
+      } catch (error) {
+        console.error('Error fetching farmers:', error);
+      }
+    };
+
+    fetchFarmers();
+  }, [get, projectId]);
 
   const projectData = {
     id: projectId,
@@ -2295,11 +2322,11 @@ export default function ProjectDetailsPage() {
     ],
   };
 
-  // Flatten all farmers from all sheds
-  const allFarmers = projectData.sheds.flatMap((shed: any) => shed.farmers);
+  // Use only fetched farmers
+  const allFarmers = farmers;
 
   // Add farmers to project data
-  const project = { ...projectData, farmers: allFarmers };
+  const project = { ...projectData, farmers: allFarmers, farmersAssigned: allFarmers.length };
 
   const [activeShedId, setActiveShedId] = useState(
     projectData.sheds[0]?.id || 1
@@ -2481,7 +2508,7 @@ export default function ProjectDetailsPage() {
           </div>
         </div>
 
-        {project.status === "Active" && (
+        {(project.status === "Active" || project.status === "Completed") && (
           <>
             {" "}
             {/* Farmers Table */}
@@ -2513,44 +2540,52 @@ export default function ProjectDetailsPage() {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-emerald-50">
-                      {currentFarmers.map((farmer) => (
-                        <tr
-                          key={farmer.user_id}
-                          // data-aos="fade-up"
-                          // data-aos-delay={`${500 + idx * 50}`}
-                          className="hover:bg-emerald-200/30 transition-colors cursor-pointer group"
-                          onClick={() => handleFarmerClick(farmer.user_id)}
-                        >
-                          <td className="px-6 py-4">
-                            <div className="flex items-center gap-3">
-                              <div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-700 font-semibold text-sm">
-                                {farmer.initials}
-                              </div>
-                              <span className="font-medium text-gray-900">
-                                {farmer.farmer_name}
-                              </span>
-                            </div>
-                          </td>
-                          <td className="px-6 py-4 text-gray-700">
-                            {farmer.mobile_number}
-                          </td>
-                          <td className="px-6 py-4 text-gray-700">
-                            {farmer.location}
-                          </td>
-                          <td
-                            className="px-6 py-4 text-gray-700 max-w-xs truncate"
-                            title={farmer.village}
-                          >
-                            {farmer.village}
-                          </td>
-                          <td className="px-6 py-4 text-gray-700">
-                            {farmer.join_date}
-                          </td>
-                          <td className="px-6 py-4 text-gray-700">
-                            <ChevronRight className="w-5 h-5 text-emerald-600 group-hover:scale-125" />
+                      {currentFarmers.length === 0 && !loading && (
+                        <tr>
+                          <td colSpan={6} className="px-6 py-8 text-center text-gray-500">
+                            No farmers found for this project
                           </td>
                         </tr>
-                      ))}
+                      )}
+                      {currentFarmers.length > 0 &&
+                        currentFarmers.map((farmer) => (
+                          <tr
+                            key={farmer.user_id}
+                            // data-aos="fade-up"
+                            // data-aos-delay={`${500 + idx * 50}`}
+                            className="hover:bg-emerald-200/30 transition-colors cursor-pointer group"
+                            onClick={() => handleFarmerClick(farmer.user_id)}
+                          >
+                            <td className="px-6 py-4">
+                              <div className="flex items-center gap-3">
+                                <div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-700 font-semibold text-sm">
+                                  {farmer.farmer_name && farmer.farmer_name.trim() ? farmer.farmer_name.trim().split(' ').map((n: string) => n[0]).join('').toUpperCase() : 'FN'}
+                                </div>
+                                <span className="font-medium text-gray-900">
+                                  {farmer.farmer_name || 'N/A'}
+                                </span>
+                              </div>
+                            </td>
+                            <td className="px-6 py-4 text-gray-700">
+                              {farmer.mobile_number}
+                            </td>
+                            <td className="px-6 py-4 text-gray-700">
+                              {farmer.zilla ? `${farmer.zilla}, Bangladesh` : 'N/A'}
+                            </td>
+                            <td
+                              className="px-6 py-4 text-gray-700 max-w-xs truncate"
+                              title={farmer.village || 'N/A'}
+                            >
+                              {farmer.village || 'N/A'}
+                            </td>
+                            <td className="px-6 py-4 text-gray-700">
+                              {farmer.join_date}
+                            </td>
+                            <td className="px-6 py-4 text-gray-700">
+                              <ChevronRight className="w-5 h-5 text-emerald-600 group-hover:scale-125" />
+                            </td>
+                          </tr>
+                        ))}
                     </tbody>
                   </table>
                 </div>
