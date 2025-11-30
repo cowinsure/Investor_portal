@@ -7,57 +7,76 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { ArrowLeft, Calendar, Package, Receipt, User } from "lucide-react";
 import { FaLocationDot } from "react-icons/fa6";
+import { toast } from "sonner";
+import { StaticProjectsData } from "../../[projectId]/page";
+import { FaBangladeshiTakaSign } from "react-icons/fa6";
+
+interface Farmer {
+  thana: string;
+  union: string;
+  zilla: string;
+  assets: number;
+  user_id: number;
+  village: string;
+  initials: string;
+  location: string;
+  policies: number;
+  join_date: string;
+  com_org_id: number;
+  farmer_name: string;
+  mobile_number: string;
+  profit: number;
+  livestock_details: {
+    reference_id: string;
+    color: string;
+    breed: string;
+    weight_kg: string;
+    age_in_months: number;
+    status: string;
+  }[];
+  expense_details: {
+    title: string;
+    amount: number;
+    date?: string;
+  }[];
+}
 
 export default function FarmerDetailsPage() {
-  const { farmerId } = useParams();
+  const { comFarmerId } = useParams();
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("livestock");
 
+  const { sheds } = StaticProjectsData;
+
+  const [farmer, setFarmer] = useState<Farmer | null>(null);
+
+  const handleStaticFarmerData = () => {
+    if (!comFarmerId) return toast.error("No farmer ID found");
+
+    let foundFarmer = null;
+    for (const shed of sheds) {
+      for (const f of shed.farmers) {
+        if (f.user_id === Number(comFarmerId)) {
+          foundFarmer = f;
+          break;
+        }
+      }
+      if (foundFarmer) break;
+    }
+
+    if (foundFarmer) {
+      setFarmer(foundFarmer);
+    } else {
+      toast.error("Farmer not found");
+    }
+  };
+
   useEffect(() => {
     AOS.init();
+    Promise.resolve().then(() => handleStaticFarmerData());
   }, []);
 
-  // Dummy data — replace with real API call
-  const [farmer] = useState({
-    id: farmerId,
-    name: "John Miller",
-    sector: "Sector A",
-    phone: "555-0101",
-    joined: "2023-01-20",
-    avatar: "/cow.png",
-    livestock: [
-      {
-        id: "UK-101",
-        breed: "Holstein",
-        age: "3 yrs",
-        milk: "28L / day",
-        status: "Healthy",
-        image: "/images/cow1.jpg",
-      },
-      {
-        id: "UK-102",
-        breed: "Jersey",
-        age: "4 yrs",
-        milk: "22L / day",
-        status: "Healthy",
-        image: "/images/cow2.jpg",
-      },
-      {
-        id: "UK-103",
-        breed: "Holstein",
-        age: "2 yrs",
-        milk: "15L / day",
-        status: "Sick",
-        image: "/images/cow3.jpg",
-      },
-    ],
-    expenses: [
-      { title: "Feed", date: "2023-10-01", amount: -1200 },
-      { title: "Medical", date: "2023-10-05", amount: -300 },
-      { title: "Maintenance", date: "2023-10-15", amount: -150 },
-      { title: "Labor", date: "2023-10-20", amount: -800 },
-    ],
-  });
+  console.log(comFarmerId);
 
   if (!farmer) return <p className="p-8">Loading...</p>;
 
@@ -92,8 +111,8 @@ export default function FarmerDetailsPage() {
           <div data-aos="fade-up" data-aos-delay="200" className="mb-8">
             <div className="flex gap-5">
               <Image
-                src={farmer.avatar}
-                alt={farmer.name}
+                src="/user.jpg"
+                alt={farmer.farmer_name}
                 width={250}
                 height={120}
                 className="rounded-2xl object-cover border-4 border-emerald-100"
@@ -101,25 +120,25 @@ export default function FarmerDetailsPage() {
 
               <div className="text-center md:text-left">
                 <h1 className="text-3xl font-bold text-gray-900">
-                  {farmer.name}
+                  {farmer.farmer_name}
                 </h1>
 
                 <div className="flex flex-col justify-center md:justify-start gap- mt-3">
                   <div className="flex items-center gap-2 px- py-1 rounded-full">
                     <FaLocationDot className="w-4 h-4 text-gray-500" />
                     <span className="text-sm font-medium text-gray-500">
-                      {farmer.sector}
+                      {farmer.location}
                     </span>
                   </div>
-                  {/* <div className="flex items-center gap-2 px- py-1 rounded-full">
+                  <div className="flex items-center gap-2 px- py-1 rounded-full">
                     <span className="text-sm font-medium text-emerald-700">
-                      📞 {farmer.phone}
+                      📞 {farmer.mobile_number}
                     </span>
-                  </div> */}
+                  </div>
                   <div className="flex items-center gap-2 px- py-1 rounded-full">
                     <Calendar className="w-4 h-4 text-gray-500" />
                     <span className="text-sm font-medium text-gray-500">
-                      {farmer.joined}
+                      {farmer.join_date}
                     </span>
                   </div>
                 </div>
@@ -167,7 +186,7 @@ export default function FarmerDetailsPage() {
                     }`}
                   >
                     <Receipt className="w-5 h-5" />
-                    <span>Expenses</span>
+                    <span>Account</span>
                   </button>
                 </div>
               </div>
@@ -193,7 +212,7 @@ export default function FarmerDetailsPage() {
                               Age
                             </th>
                             <th className="px-4 py-3 text-left text-sm font-semibold text-emerald-100">
-                              Milk Production
+                              Weight
                             </th>
                             <th className="px-4 py-3 text-left text-sm font-semibold text-emerald-100">
                               Status
@@ -201,29 +220,29 @@ export default function FarmerDetailsPage() {
                           </tr>
                         </thead>
                         <tbody className="divide-y divide-emerald-200 px-5">
-                          {farmer.livestock.map((cow, idx) => (
+                          {farmer.livestock_details.map((cow, idx) => (
                             <tr
-                              key={cow.id}
-                              data-aos="fade-up"
-                              data-aos-delay={`${300 + idx * 100}`}
+                              key={cow.reference_id}
+                              // data-aos="fade-up"
+                              // data-aos-delay={`${300 + idx * 100}`}
                               className="hover:bg-emerald-50/30 transition-colors"
                             >
                               <td className="px-4 py-4 font-semibold text-gray-900">
-                                {cow.id}
+                                {cow.reference_id}
                               </td>
                               <td className="px-4 py-4 text-gray-700">
                                 {cow.breed}
                               </td>
                               <td className="px-4 py-4 text-gray-700">
-                                {cow.age}
+                                {cow.age_in_months}
                               </td>
                               <td className="px-4 py-4 text-gray-700">
-                                {cow.milk}
+                                {cow.weight_kg} kg
                               </td>
                               <td className="px-4 py-4">
                                 <span
                                   className={`px-3 py-1 text-xs rounded-full font-medium ${
-                                    cow.status === "Healthy"
+                                    cow.status === "sold"
                                       ? "bg-emerald-100 text-emerald-700"
                                       : "bg-red-100 text-red-700"
                                   }`}
@@ -251,16 +270,16 @@ export default function FarmerDetailsPage() {
                             <th className="px-4 py-3 text-left text-sm font-semibold text-emerald-100">
                               Category
                             </th>
-                            <th className="px-4 py-3 text-left text-sm font-semibold text-emerald-100">
+                            {/* <th className="px-4 py-3 text-left text-sm font-semibold text-emerald-100">
                               Date
-                            </th>
+                            </th> */}
                             <th className="px-4 py-3 text-left text-sm font-semibold text-emerald-100">
                               Amount
                             </th>
                           </tr>
                         </thead>
                         <tbody className="divide-y divide-emerald-200">
-                          {farmer.expenses.map((expense, idx) => (
+                          {farmer.expense_details.map((expense, idx) => (
                             <tr
                               key={idx}
                               data-aos="fade-up"
@@ -270,12 +289,13 @@ export default function FarmerDetailsPage() {
                               <td className="px-4 py-4 font-semibold text-gray-900">
                                 {expense.title}
                               </td>
-                              <td className="px-4 py-4 text-gray-700">
-                                {expense.date}
-                              </td>
+                              {/* <td className="px-4 py-4 text-gray-700">
+                                {expense.date || "N/A"}
+                              </td> */}
                               <td className="px-4 py-4">
-                                <span className="font-semibold text-red-600">
-                                  ${Math.abs(expense.amount)}
+                                <span className="font-semibold text-red-600 flex items-center gap-1">
+                                  <FaBangladeshiTakaSign />
+                                  {expense.amount.toLocaleString()}
                                 </span>
                               </td>
                             </tr>

@@ -4,7 +4,7 @@ import Navbar from "@/components/ui/Navbar";
 import { Roboto } from "next/font/google";
 import LenisProvider from "@/components/ui/Scroll Wrapper/LenisProvider";
 import "animate.css";
-
+import { AuthProvider } from "@/core/context/AuthContext";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -26,8 +26,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${roboto.variable} antialiased`}>
-        <Navbar />
-        <LenisProvider>{children}</LenisProvider>
+        <AuthProvider>
+          <Navbar />
+          <LenisProvider>{children}</LenisProvider>
+        </AuthProvider>
       </body>
     </html>
   );

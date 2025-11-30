@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Menu, X, LogOut, User } from "lucide-react";
-import path from "path";
+import { useAuth } from "@/core/context/AuthContext";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -14,6 +14,7 @@ const navLinks = [
 ];
 
 export default function Navbar() {
+  const { logout, userId } = useAuth();
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -30,6 +31,14 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Reset timeout when pathname or userId changes
+  useEffect(() => {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+      setTimeoutId(null);
+    }
+  }, [pathname, userId]);
 
   if (pathname?.startsWith("/auth/")) {
     return null;
@@ -102,7 +111,7 @@ export default function Navbar() {
             setDropdownOpen(true);
           }}
           onMouseLeave={() => {
-            const id = setTimeout(() => setDropdownOpen(false), 200);
+            const id = setTimeout(() => setDropdownOpen(false), 100);
             setTimeoutId(id);
           }}
         >
@@ -138,7 +147,7 @@ export default function Navbar() {
 
                 <button
                   onClick={() => router.push("/auth/login")}
-                  className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-green-100 transition text-green-700"
+                  className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-green-100 transition text-green-700 cursor-pointer"
                 >
                   <LogOut size={16} />
                   Sign Out
@@ -246,11 +255,8 @@ export default function Navbar() {
                 </div>
 
                 <button
-                  onClick={() => {
-                    router.push("/auth/login");
-                    setOpen(false);
-                  }}
-                  className="flex items-center gap-3 w-full px-4 py-3 rounded-lg hover:bg-red-50 hover:text-red-700 transition-colors text-gray-700"
+                  onClick={logout}
+                  className="flex items-center gap-3 w-full px-4 py-3 rounded-lg hover:bg-red-50 hover:text-red-700 transition-colors text-gray-700 cursor-pointer"
                 >
                   <LogOut size={18} />
                   Sign Out
