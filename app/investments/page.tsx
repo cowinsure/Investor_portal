@@ -241,18 +241,15 @@ export default function MyInvestments() {
                         key={p.project_id}
                         data-aos="fade-up"
                         data-aos-delay={`${idx * 100}`}
-                        className="
-              bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg
-              border border-emerald-100 hover:shadow-xl
-              transition-all overflow-hidden
-
-              flex flex-col
-            "
+                        className=" bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-emerald-100 hover:shadow-xl transition-all overflow-hidden flex flex-col"
                       >
                         <img
-                          src={p.image}
+                          src={p.image || "/farm.webp"}
                           alt={p.project_name}
-                          className="object- w-full h-62"
+                          className="object-cover w-full h-62"
+                          onError={(e) => {
+                            e.currentTarget.src = "/farm.webp";
+                          }}
                         />
 
                         <div className="p-4 flex flex-col">
