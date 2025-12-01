@@ -17,18 +17,34 @@ const apiClient = axios.create({
 // console.log(process.env.NEXT_PUBLIC_API_BASE_URL);
 
 // Add interceptor for auth token
+// apiClient.interceptors.request.use(
+//   (config: InternalAxiosRequestConfig) => {
+//     const token =
+//       typeof window !== "undefined"
+//         ? localStorage.getItem("accessToken")
+//         : null;
+//     if (token) {
+//       config.headers = {
+//         ...config.headers,
+//         Authorization: `Bearer ${token}`,
+//       };
+//     }
+//     return config;
+//   },
+//   (error) => Promise.reject(error)
+// );
+
 apiClient.interceptors.request.use(
-  (config: InternalAxiosRequestConfig) => {
+  (config) => {
     const token =
       typeof window !== "undefined"
         ? localStorage.getItem("accessToken")
         : null;
+
     if (token) {
-      config.headers = {
-        ...config.headers,
-        Authorization: `Bearer ${token}`,
-      };
+      config.headers.set("Authorization", `Bearer ${token}`);
     }
+
     return config;
   },
   (error) => Promise.reject(error)
