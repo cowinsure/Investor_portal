@@ -5,6 +5,7 @@ import { Roboto } from "next/font/google";
 import LenisProvider from "@/components/ui/Scroll Wrapper/LenisProvider";
 import "animate.css";
 import { AuthProvider } from "@/core/context/AuthContext";
+import MobileNav from "@/components/MobileNav";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -27,8 +28,13 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${roboto.variable} antialiased`}>
         <AuthProvider>
-          <Navbar />
-          <LenisProvider>{children}</LenisProvider>
+          <MobileNav />
+          <div className="hidden lg:block">
+            <Navbar />
+          </div>
+          <div>
+            <LenisProvider>{children}</LenisProvider>
+          </div>
         </AuthProvider>
       </body>
     </html>

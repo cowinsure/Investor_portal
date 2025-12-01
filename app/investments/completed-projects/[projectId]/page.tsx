@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import image from "../../../../public/dairy_farm.jpg";
 import { PiSolarRoofBold } from "react-icons/pi";
+import Section from "@/components/ui/Section";
 
 export const StaticProjectsData = {
   id: 3,
@@ -2319,7 +2320,7 @@ export default function ProjectDetailsPage() {
 
   return (
     <div className="p-8 bg-linear-to-br from-emerald-50 via-white to-green-50 min-h-screen">
-      <div className="max-w-[70%] mx-auto pt-30">
+      <Section>
         {/* Back Button */}
         <button
           onClick={() => router.push("/investments")}
@@ -2707,7 +2708,7 @@ export default function ProjectDetailsPage() {
             </div>
           </>
         )}
-      </div>
+      </Section>
     </div>
   );
 }

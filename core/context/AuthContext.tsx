@@ -104,7 +104,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
     // alert("Log out successful")
     toast.success("Log out successful");
-    router.push("/login");
+    router.push("/auth/login");
   };
 
   return (

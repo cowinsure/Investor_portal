@@ -10,6 +10,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import { toast } from "sonner";
 import { StaticProjectsData } from "../../[projectId]/page";
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
+import Section from "@/components/ui/Section";
 
 interface Farmer {
   thana: string;
@@ -82,7 +83,7 @@ export default function FarmerDetailsPage() {
 
   return (
     <div className="p-8 bg-linear-to-br from-emerald-50 via-white to-green-50 min-h-screen overflow-hidden">
-      <div className="max-w-[98%] lg:max-w-[70%] mx-auto pt-30 relative">
+      <Section>
         {/* Back */}
         <button
           onClick={() => router.back()}
@@ -309,7 +310,7 @@ export default function FarmerDetailsPage() {
             </div>
           </div>
         </div>
-      </div>
+      </Section>
     </div>
   );
 }

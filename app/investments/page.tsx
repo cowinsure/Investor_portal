@@ -8,6 +8,7 @@ import { CiLocationOn } from "react-icons/ci";
 import { DollarSign, FolderKanban, Layers, FolderCheck } from "lucide-react";
 import { useRouter } from "next/navigation";
 import useApi from "@/hooks/useApi";
+import Section from "@/components/ui/Section";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 type StatsValues = {
@@ -17,7 +18,7 @@ type StatsValues = {
   closedProjects: number;
 };
 
-interface Project {
+export interface Project {
   project_id: number;
   image: string;
   project_name: string;
@@ -91,9 +92,7 @@ export default function MyInvestments() {
   }, [get]);
 
   const totalInvested = StatProjects.reduce((sum, p) => sum + p.investment, 0);
-  const activeProjects = StatProjects.filter(
-    (p) => p.status === "Active"
-  ).length;
+  const activeProjects = projects.length;
   const closedProjects = StatProjects.filter(
     (p) => p.status !== "Active"
   ).length;
@@ -115,18 +114,18 @@ export default function MyInvestments() {
     valueKey: keyof StatsValues;
     icon: string;
   }[] = [
-    {
-      id: 1,
-      label: "Current Invested",
-      valueKey: "currentInvested",
-      icon: "DollarSign",
-    },
-    {
-      id: 2,
-      label: "Total Invested",
-      valueKey: "totalInvested",
-      icon: "DollarSign",
-    },
+    // {
+    //   id: 1,
+    //   label: "Current Invested",
+    //   valueKey: "currentInvested",
+    //   icon: "DollarSign",
+    // },
+    // {
+    //   id: 2,
+    //   label: "Total Invested",
+    //   valueKey: "totalInvested",
+    //   icon: "DollarSign",
+    // },
     {
       id: 3,
       label: "Active Projects",
@@ -166,7 +165,7 @@ export default function MyInvestments() {
 
   return (
     <div className="p-4 lg:p-8 bg-linear-to-br from-emerald-50 via-white to-green-50 min-h-screen">
-      <div className="lg:max-w-[70%] mx-auto pt-20 lg:pt-30">
+      <Section>
         {/* Header */}
         <div
           data-aos="fade-down"
@@ -188,7 +187,7 @@ export default function MyInvestments() {
         <div
           data-aos="fade-up"
           data-aos-delay="200"
-          className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-10"
         >
           {statsData.map((item) => {
             const Icon = icons[item.icon];
@@ -235,7 +234,7 @@ export default function MyInvestments() {
                   <h3 className="text-lg font-semibold text-emerald-700 mb-4">
                     Active Projects : {projects.length}
                   </h3>
-                  <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
                     {projects.map((p, idx) => (
                       <div
                         key={p.project_id}
@@ -244,11 +243,11 @@ export default function MyInvestments() {
                         className=" bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-emerald-100 hover:shadow-xl transition-all overflow-hidden flex flex-col"
                       >
                         <img
-                          src={p.image || "/farm.webp"}
+                          src={p.image || "/farm2.png"}
                           alt={p.project_name}
-                          className="object-cover w-full h-62"
+                          className="object-cover w-full h-72"
                           onError={(e) => {
-                            e.currentTarget.src = "/farm.webp";
+                            e.currentTarget.src = "/farm2.png";
                           }}
                         />
 
@@ -297,7 +296,7 @@ export default function MyInvestments() {
                                   `/investments/projects/${p.project_id}`
                                 )
                               }
-                              className="inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 font-semibold transition border border-green-300 px-4 py-3 rounded-lg cursor-pointer hover:bg-emerald-100"
+                              className="inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 font-semibold transition border border-green-300 px-4 py-3 rounded-lg cursor-pointer hover:bg-emerald-100 text-sm"
                             >
                               View Project
                             </button>
@@ -407,7 +406,7 @@ export default function MyInvestments() {
             </div>
           </div>
         </div>
-      </div>
+      </Section>
     </div>
   );
 }
