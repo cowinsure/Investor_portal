@@ -13,6 +13,7 @@ import { FaBangladeshiTakaSign } from "react-icons/fa6";
 import Section from "@/components/ui/Section";
 
 interface Farmer {
+  img: string;
   thana: string;
   union: string;
   zilla: string;
@@ -66,7 +67,7 @@ export default function FarmerDetailsPage() {
     }
 
     if (foundFarmer) {
-      setFarmer(foundFarmer);
+      setFarmer(foundFarmer as Farmer);
     } else {
       toast.error("Farmer not found");
     }
@@ -110,9 +111,9 @@ export default function FarmerDetailsPage() {
         <div className="">
           {/* Header */}
           <div data-aos="fade-up" data-aos-delay="200" className="mb-8">
-            <div className="flex gap-5">
+            <div className="flex gap-5 h-64">
               <Image
-                src="/user.jpg"
+                src={farmer.img}
                 alt={farmer.farmer_name}
                 width={250}
                 height={120}
@@ -131,17 +132,17 @@ export default function FarmerDetailsPage() {
                       {farmer.location}
                     </span>
                   </div>
-                  <div className="flex items-center gap-2 px- py-1 rounded-full">
+                  {/* <div className="flex items-center gap-2 px- py-1 rounded-full">
                     <span className="text-sm font-medium text-emerald-700">
                       📞 {farmer.mobile_number}
                     </span>
-                  </div>
-                  <div className="flex items-center gap-2 px- py-1 rounded-full">
+                  </div> */}
+                  {/* <div className="flex items-center gap-2 px- py-1 rounded-full">
                     <Calendar className="w-4 h-4 text-gray-500" />
                     <span className="text-sm font-medium text-gray-500">
                       {farmer.join_date}
                     </span>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

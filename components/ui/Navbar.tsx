@@ -18,9 +18,10 @@ export default function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [hasImage, setHasImage] = useState(true);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const logoutTimerRef = useRef<NodeJS.Timeout | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
-  const email = "reza@insurecow.com";
+  // const email = "reza@insurecow.com";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,6 +38,32 @@ export default function Navbar() {
       timeoutRef.current = null;
     }
   }, [pathname, userId]);
+
+  // Auto logout after 1 hour
+  useEffect(() => {
+    if (userId) {
+      const timer = setTimeout(() => {
+        logout();
+      }, 3600000); // 1 hour in milliseconds
+      logoutTimerRef.current = timer;
+      return () => {
+        if (logoutTimerRef.current) {
+          clearTimeout(logoutTimerRef.current);
+        }
+      };
+    } else {
+      if (logoutTimerRef.current) {
+        clearTimeout(logoutTimerRef.current);
+        logoutTimerRef.current = null;
+      }
+    }
+  }, [userId, logout]);
+
+  if(userId){
+    console.log("user is here");
+  }else{
+    console.log("User isnt");
+  }
 
   if (pathname?.startsWith("/auth/")) {
     return null;
@@ -100,60 +127,68 @@ export default function Navbar() {
           })}
         </ul>
 
-        {/* RIGHT SIDE - AVATAR DROPDOWN */}
-        <div
-          className="relative"
-          onMouseEnter={() => {
-            if (timeoutRef.current) clearTimeout(timeoutRef.current);
-            timeoutRef.current = null;
-            setDropdownOpen(true);
-          }}
-          onMouseLeave={() => {
-            const id = setTimeout(() => setDropdownOpen(false), 100);
-            timeoutRef.current = id;
-          }}
-        >
-          {/* Avatar Button */}
-          <button className="w-10 h-10 rounded-full overflow-hidden hover:shadow-md transition flex items-center justify-center">
-            {hasImage ? (
-              <img
-                src="/placeholder.png"
-                alt="User"
-                className="w-full h-full object-fill"
-                onError={() => setHasImage(false)}
-              />
-            ) : (
-              <User className="w-6 h-6 text-green-400" />
-            )}
-          </button>
+        {/* RIGHT SIDE - CONDITIONAL RENDERING */}
+        {userId ? (
+          <div
+            className="relative"
+            onMouseEnter={() => {
+              if (timeoutRef.current) clearTimeout(timeoutRef.current);
+              timeoutRef.current = null;
+              setDropdownOpen(true);
+            }}
+            onMouseLeave={() => {
+              const id = setTimeout(() => setDropdownOpen(false), 100);
+              timeoutRef.current = id;
+            }}
+          >
+            {/* Avatar Button */}
+            <button className="w-10 h-10 rounded-full overflow-hidden hover:shadow-md transition flex items-center justify-center">
+              {hasImage ? (
+                <img
+                  src="/placeholder.png"
+                  alt="User"
+                  className="w-full h-full object-fill"
+                  onError={() => setHasImage(false)}
+                />
+              ) : (
+                <User className="w-6 h-6 text-green-400" />
+              )}
+            </button>
 
-          {/* Smooth Dropdown */}
-          {dropdownOpen && (
-            <div
-              className="absolute right-0 mt-3 w-56 rounded-xl bg-white shadow-lg transition-all duration-200"
-              onMouseEnter={() => {
-                if (timeoutRef.current) clearTimeout(timeoutRef.current);
-                timeoutRef.current = null;
-              }}
-              onMouseLeave={() => {
-                const id = setTimeout(() => setDropdownOpen(false), 200);
-                timeoutRef.current = id;
-              }}
-            >
-              <div className="p-4 flex flex-col gap-3">
-                <p className="text-sm text-green-600">{email}</p>
+            {/* Smooth Dropdown */}
+            {dropdownOpen && (
+              <div
+                className="absolute right-0 mt-3 w-56 rounded-xl bg-white shadow-lg transition-all duration-200"
+                onMouseEnter={() => {
+                  if (timeoutRef.current) clearTimeout(timeoutRef.current);
+                  timeoutRef.current = null;
+                }}
+                onMouseLeave={() => {
+                  const id = setTimeout(() => setDropdownOpen(false), 200);
+                  timeoutRef.current = id;
+                }}
+              >
+                <div className="p-4 flex flex-col gap-3">
+                  {/* <p className="text-sm text-green-600">{email}</p> */}
 
-                <button
-                  onClick={logout}
-                  className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-green-100 transition text-green-700 cursor-pointer"
-                >
-                  <LogOut size={16} />
-                  Sign Out
-                </button>
+                  <button
+                    onClick={logout}
+                    className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-green-100 transition text-green-700 cursor-pointer"
+                  >
+                    <LogOut size={16} />
+                    Sign Out
+                  </button>
+                </div>
               </div>
-            </div>
-          )}
-        </div>
+            )}
+          </div>
+        ) : (
+          <Link href="/auth/login">
+            <button className="px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition font-medium">
+              Login
+            </button>
+          </Link>
+        )}
       </nav>
     </header>
   );

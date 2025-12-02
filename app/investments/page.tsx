@@ -9,6 +9,8 @@ import { DollarSign, FolderKanban, Layers, FolderCheck } from "lucide-react";
 import { useRouter } from "next/navigation";
 import useApi from "@/hooks/useApi";
 import Section from "@/components/ui/Section";
+import { useAuth } from "@/core/context/AuthContext";
+import { FaBangladeshiTakaSign } from "react-icons/fa6";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 type StatsValues = {
@@ -52,11 +54,11 @@ const StaticProjectsData = [
   },
   {
     id: 3,
-    title: "Sunny Pastures Co-op",
-    location: "Texas, USA",
-    investment: 320000,
+    title: "Community Project 03",
+    location: "Pakundia (Syed Ga)",
+    investment: 1230000,
     status: "Completed",
-    image: "/dairy_farm.jpg",
+    image: "/projectimg.png",
     description:
       "Community-driven cooperative farm specializing in grass-fed beef and regenerative agriculture.",
   },
@@ -65,12 +67,19 @@ const StaticProjectsData = [
 export default function MyInvestments() {
   const { get } = useApi();
   const router = useRouter();
+  const { userId, isAuthLoading } = useAuth();
   const [StatProjects] = useState(StaticProjectsData);
   const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
     AOS.init();
   }, []);
+
+  useEffect(() => {
+    if (!isAuthLoading && !userId) {
+      router.push("/auth/login");
+    }
+  }, [isAuthLoading, userId, router]);
 
   useEffect(() => {
     // Fetch Project Data
@@ -283,8 +292,11 @@ export default function MyInvestments() {
                                   Investment on Project
                                 </p>
                               </div>
-                              <p className="font-bold text-2xl">
-                                $
+                              <p className="font-bold text-2xl flex items-center">
+                                <FaBangladeshiTakaSign
+                                  size={23}
+                                  className="-mb-1"
+                                />
                                 {p?.investments?.[0]?.investment_amount?.toLocaleString() ??
                                   "0"}
                               </p>
@@ -328,19 +340,13 @@ export default function MyInvestments() {
                           key={p.id}
                           data-aos="fade-up"
                           data-aos-delay={`${idx * 100}`}
-                          className="
-              bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg
-              border border-emerald-100 hover:shadow-xl
-              transition-all overflow-hidden
-
-              flex flex-col
-            "
+                          className=" bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-emerald-100 hover:shadow-xl transition-all overflow-hidden flex flex-col"
                         >
                           {/* Image */}
                           <img
                             src={p.image}
                             alt={p.title}
-                            className="object- w-full h-62"
+                            className="object-cover w-full h-62"
                           />
 
                           {/* Content */}
@@ -377,11 +383,15 @@ export default function MyInvestments() {
                                 <div className="flex items-center gap-2">
                                   {/* <TrendingUp className="w-4 h-4 text-emerald-600" /> */}
                                   <p className="font-semibold text-emerald-700">
-                                    Investment on Project
+                                    Investment on project
                                   </p>
                                 </div>
-                                <p className="font-bold text-2xl">
-                                  ${p.investment.toLocaleString()}
+                                <p className="font-bold text-2xl flex items-center">
+                                  <FaBangladeshiTakaSign
+                                    size={23}
+                                    className="-mb-1"
+                                  />
+                                  {p.investment.toLocaleString()}
                                 </p>
                               </div>
 
@@ -391,7 +401,7 @@ export default function MyInvestments() {
                                     `/investments/completed-projects/${p.id}`
                                   )
                                 }
-                                className="inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 font-semibold transition border border-green-300 px-4 py-3 rounded-lg cursor-pointer hover:bg-emerald-100"
+                                className="inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 font-semibold transition border border-green-300 px-4 py-3 rounded-lg cursor-pointer hover:bg-emerald-100 text-sm"
                               >
                                 View Project
                               </button>

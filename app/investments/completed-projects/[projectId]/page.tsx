@@ -16,34 +16,39 @@ import {
   ChevronsLeft,
   ChevronsRight,
   Package,
+  Clock,
 } from "lucide-react";
-import image from "../../../../public/dairy_farm.jpg";
+import image from "../../../../public/projectimg.png";
 import { PiSolarRoofBold } from "react-icons/pi";
 import Section from "@/components/ui/Section";
+import { FaBangladeshiTakaSign } from "react-icons/fa6";
 
 export const StaticProjectsData = {
   id: 3,
-  title: "Sunny Pastures Co-op",
+  title: "Community Project 03",
   farmersAssigned: 20,
   status: "Completed",
-  startDate: "2023-01-15",
+  startDate: "2024-01-15",
+  endDate: "2024-05-15",
+  projectDuration: 4,
   overview:
-    "Sustainable dairy farming focused on organic milk production using free-range grazing techniques.",
-  allocation: 7500000,
+    "Sustainable dairy farming focused on beef fattening using free-range grazing techniques.",
+  allocation: 25474776,
   image: image,
-  investment_amnt: 5000000,
-  return_on_investment_percentage: "17.5 - 20",
-  expected_return_amnt: 55000000,
+  investment_amnt: 1230000,
+  return_on_investment_percentage: "4.71",
+  expected_return_amnt: 57933,
   sheds: [
     {
       id: 1,
       shed_img: "shed_madaripur_01.jpg",
-      shed_name: "Madaripur Central Cattle Shed",
+      shed_name: "Pakundia Shed-02",
       shed_location: "Dasar, Kalkini, Madaripur, Bangladesh",
       shed_capacity: 60,
       assigned_farmer: 6,
       farmers: [
         {
+          img: "/farmerImages/farmerimg1.jpeg",
           thana: "Shibchar",
           union: "Bandarkhola",
           zilla: "Madaripur",
@@ -51,7 +56,7 @@ export const StaticProjectsData = {
           user_id: 3001,
           village: "Village: Char Janajat, Union: Bandarkhola, Thana: Shibchar",
           initials: "MR",
-          location: "Madaripur, Bangladesh",
+          location: "Pakundia, Bangladesh",
           policies: 0,
           join_date: "2024-11-12",
           com_org_id: 0,
@@ -154,6 +159,7 @@ export const StaticProjectsData = {
           ],
         },
         {
+          img: "/farmerImages/farmerimg3.jpeg",
           thana: "Sadarpur",
           union: "Nasirabad",
           zilla: "Faridpur",
@@ -161,7 +167,7 @@ export const StaticProjectsData = {
           user_id: 3002,
           village: "Village: Brahmankanda, Union: Nasirabad, Thana: Sadarpur",
           initials: "AH",
-          location: "Faridpur, Bangladesh",
+          location: "Pakundia, Bangladesh",
           policies: 0,
           join_date: "2024-09-25",
           com_org_id: 0,
@@ -264,6 +270,7 @@ export const StaticProjectsData = {
           ],
         },
         {
+          img: "/farmerImages/farmerimg2.jpeg",
           thana: "Bhedarganj",
           union: "Chitolia",
           zilla: "Shariatpur",
@@ -271,7 +278,7 @@ export const StaticProjectsData = {
           user_id: 3003,
           village: "Village: Charkandi, Union: Chitolia, Thana: Bhedarganj",
           initials: "NS",
-          location: "Shariatpur, Bangladesh",
+          location: "Pakundia, Bangladesh",
           policies: 0,
           join_date: "2024-10-14",
           com_org_id: 0,
@@ -374,6 +381,7 @@ export const StaticProjectsData = {
           ],
         },
         {
+          img: "/farmerImages/farmerimg5.jpeg",
           thana: "Charbhadrasan",
           union: "Char Harirampur",
           zilla: "Faridpur",
@@ -382,7 +390,7 @@ export const StaticProjectsData = {
           village:
             "Village: Char Ghoshpur, Union: Char Harirampur, Thana: Charbhadrasan",
           initials: "SS",
-          location: "Faridpur, Bangladesh",
+          location: "Pakundia, Bangladesh",
           policies: 0,
           join_date: "2024-08-22",
           com_org_id: 0,
@@ -485,6 +493,7 @@ export const StaticProjectsData = {
           ],
         },
         {
+          img: "/farmerImages/farmerimg4.jpeg",
           thana: "Naria",
           union: "Chamta",
           zilla: "Shariatpur",
@@ -492,7 +501,7 @@ export const StaticProjectsData = {
           user_id: 3005,
           village: "Village: Purba Chamta, Union: Chamta, Thana: Naria",
           initials: "AR",
-          location: "Shariatpur, Bangladesh",
+          location: "Pakundia, Bangladesh",
           policies: 0,
           join_date: "2024-07-30",
           com_org_id: 0,
@@ -595,6 +604,7 @@ export const StaticProjectsData = {
           ],
         },
         {
+          img: "/farmerImages/farmerimg6.jpeg",
           thana: "Delduar",
           union: "Elasin",
           zilla: "Tangail",
@@ -602,7 +612,7 @@ export const StaticProjectsData = {
           user_id: 5006,
           village: "Village: Elasin, Union: Elasin, Thana: Delduar",
           initials: "MR",
-          location: "Tangail, Bangladesh",
+          location: "Pakundia, Bangladesh",
           policies: 0,
           join_date: "2025-10-22",
           com_org_id: 0,
@@ -709,12 +719,13 @@ export const StaticProjectsData = {
     {
       id: 2,
       shed_img: "shed_faridpur_02.jpg",
-      shed_name: "Bhanga Riverbank Livestock Farm",
+      shed_name: "Bajitpur Shed-01",
       shed_location: "Alfadanga Bazar, Alfadanga, Faridpur, Bangladesh",
       shed_capacity: 60,
       assigned_farmer: 6,
       farmers: [
         {
+          img: "/farmerImages/farmerimg7.jpeg",
           thana: "Kaliganj",
           union: "Baktarpur",
           zilla: "Gazipur",
@@ -722,7 +733,7 @@ export const StaticProjectsData = {
           user_id: 5007,
           village: "Village: Baktarpur, Union: Baktarpur, Thana: Kaliganj",
           initials: "TS",
-          location: "Gazipur, Bangladesh",
+          location: "Bajitpur, Bangladesh",
           policies: 0,
           join_date: "2025-10-11",
           com_org_id: 0,
@@ -825,6 +836,7 @@ export const StaticProjectsData = {
           ],
         },
         {
+          img: "/farmerImages/farmerimg9.jpeg",
           thana: "Sreenagar",
           union: "Kolapara",
           zilla: "Munshiganj",
@@ -832,7 +844,7 @@ export const StaticProjectsData = {
           user_id: 5008,
           village: "Village: Kolapara, Union: Kolapara, Thana: Sreenagar",
           initials: "HK",
-          location: "Munshiganj, Bangladesh",
+          location: "Bajitpur, Bangladesh",
           policies: 0,
           join_date: "2025-09-29",
           com_org_id: 0,
@@ -935,6 +947,7 @@ export const StaticProjectsData = {
           ],
         },
         {
+          img: "/farmerImages/farmerimg14.jpeg",
           thana: "Nawabganj",
           union: "Shikaripara",
           zilla: "Dhaka",
@@ -942,7 +955,7 @@ export const StaticProjectsData = {
           user_id: 5009,
           village: "Village: Shikaripara, Union: Shikaripara, Thana: Nawabganj",
           initials: "RB",
-          location: "Dhaka, Bangladesh",
+          location: "Bajitpur, Bangladesh",
           policies: 0,
           join_date: "2025-10-08",
           com_org_id: 0,
@@ -1045,6 +1058,7 @@ export const StaticProjectsData = {
           ],
         },
         {
+          img: "/farmerImages/farmerimg15.jpeg",
           thana: "Bera",
           union: "Kashinathpur",
           zilla: "Pabna",
@@ -1052,7 +1066,7 @@ export const StaticProjectsData = {
           user_id: 5010,
           village: "Village: Kashinathpur, Union: Kashinathpur, Thana: Bera",
           initials: "SK",
-          location: "Pabna, Bangladesh",
+          location: "Bajitpur, Bangladesh",
           policies: 0,
           join_date: "2025-10-14",
           com_org_id: 0,
@@ -1155,6 +1169,7 @@ export const StaticProjectsData = {
           ],
         },
         {
+          img: "/farmerImages/farmerimg16.jpeg",
           thana: "Kalkini",
           union: "Dasar",
           zilla: "Madaripur",
@@ -1162,7 +1177,7 @@ export const StaticProjectsData = {
           user_id: 5011,
           village: "Village: Dasar Bazar, Union: Dasar, Thana: Kalkini",
           initials: "MK",
-          location: "Madaripur, Bangladesh",
+          location: "Bajitpur, Bangladesh",
           policies: 0,
           join_date: "2025-03-18",
           com_org_id: 0,
@@ -1265,6 +1280,7 @@ export const StaticProjectsData = {
           ],
         },
         {
+          img: "/farmerImages/farmerimg8.jpeg",
           thana: "Alfadanga",
           union: "Panchuria",
           zilla: "Faridpur",
@@ -1272,7 +1288,7 @@ export const StaticProjectsData = {
           user_id: 5012,
           village: "Village: Gopalpur, Union: Panchuria, Thana: Alfadanga",
           initials: "RS",
-          location: "Faridpur, Bangladesh",
+          location: "Bajitpur, Bangladesh",
           policies: 0,
           join_date: "2025-02-27",
           com_org_id: 0,
@@ -1379,12 +1395,13 @@ export const StaticProjectsData = {
     {
       id: 3,
       shed_img: "shed_shariatpur_03.jpg",
-      shed_name: "Padma Ghat Beef Fattening Shed",
+      shed_name: "Cumilla Shed-01",
       shed_location: "Damudya Ghat, Damudya, Shariatpur, Bangladesh",
       shed_capacity: 40,
       assigned_farmer: 4,
       farmers: [
         {
+          img: "/farmerImages/farmerimg17.jpeg",
           thana: "Damudya",
           union: "Darul Aman",
           zilla: "Shariatpur",
@@ -1392,7 +1409,7 @@ export const StaticProjectsData = {
           user_id: 5013,
           village: "Village: Kadirpur, Union: Darul Aman, Thana: Damudya",
           initials: "AS",
-          location: "Shariatpur, Bangladesh",
+          location: "Cumilla, Bangladesh",
           policies: 0,
           join_date: "2025-05-10",
           com_org_id: 0,
@@ -1495,6 +1512,7 @@ export const StaticProjectsData = {
           ],
         },
         {
+          img: "/farmerImages/farmerimg18.jpeg",
           thana: "Kapasia",
           union: "Tok",
           zilla: "Gazipur",
@@ -1502,7 +1520,7 @@ export const StaticProjectsData = {
           user_id: 5014,
           village: "Village: Toknayan, Union: Tok, Thana: Kapasia",
           initials: "NH",
-          location: "Gazipur, Bangladesh",
+          location: "Cumilla, Bangladesh",
           policies: 0,
           join_date: "2025-06-19",
           com_org_id: 0,
@@ -1605,6 +1623,7 @@ export const StaticProjectsData = {
           ],
         },
         {
+          img: "/farmerImages/farmerimg10.jpeg",
           thana: "Lohagara",
           union: "Barakhain",
           zilla: "Narayanganj",
@@ -1613,7 +1632,7 @@ export const StaticProjectsData = {
           village:
             "Village: Barakhain Bazar, Union: Barakhain, Thana: Lohagara",
           initials: "FB",
-          location: "Narayanganj, Bangladesh",
+          location: "Cumilla, Bangladesh",
           policies: 0,
           join_date: "2025-01-14",
           com_org_id: 0,
@@ -1716,6 +1735,7 @@ export const StaticProjectsData = {
           ],
         },
         {
+          img: "/farmerImages/farmerimg19.jpeg",
           thana: "Ishwardi",
           union: "Paksey",
           zilla: "Pabna",
@@ -1724,7 +1744,7 @@ export const StaticProjectsData = {
           village:
             "Village: Paksey Puraton Bazar, Union: Paksey, Thana: Ishwardi",
           initials: "MM",
-          location: "Pabna, Bangladesh",
+          location: "Cumilla, Bangladesh",
           policies: 0,
           join_date: "2025-07-05",
           com_org_id: 0,
@@ -1831,12 +1851,13 @@ export const StaticProjectsData = {
     {
       id: 4,
       shed_img: "shed_gazipur_04.jpg",
-      shed_name: "Kapasia Modern Cattle House",
+      shed_name: "Savar Shed-02",
       shed_location: "Tok Bazar, Kapasia, Gazipur, Bangladesh",
       shed_capacity: 40,
       assigned_farmer: 4,
       farmers: [
         {
+          img: "/farmerImages/farmerimg11.jpeg",
           thana: "Tongibari",
           union: "Autshahi",
           zilla: "Munshiganj",
@@ -1844,7 +1865,7 @@ export const StaticProjectsData = {
           user_id: 5017,
           village: "Village: Autshahi, Union: Autshahi, Thana: Tongibari",
           initials: "SJ",
-          location: "Munshiganj, Bangladesh",
+          location: "Savar, Bangladesh",
           policies: 0,
           join_date: "2025-08-21",
           com_org_id: 0,
@@ -1947,6 +1968,7 @@ export const StaticProjectsData = {
           ],
         },
         {
+          img: "/farmerImages/farmerimg20.jpeg",
           thana: "Rajbari Sadar",
           union: "Mizanpur",
           zilla: "Rajbari",
@@ -1955,7 +1977,7 @@ export const StaticProjectsData = {
           village:
             "Village: Khankhanapur, Union: Mizanpur, Thana: Rajbari Sadar",
           initials: "AK",
-          location: "Rajbari, Bangladesh",
+          location: "Savar, Bangladesh",
           policies: 0,
           join_date: "2025-09-12",
           com_org_id: 0,
@@ -2058,6 +2080,7 @@ export const StaticProjectsData = {
           ],
         },
         {
+          img: "/farmerImages/farmerimg12.jpeg",
           thana: "Daulatpur",
           union: "Ramkrishnapur",
           zilla: "Kushtia",
@@ -2066,7 +2089,7 @@ export const StaticProjectsData = {
           village:
             "Village: Hogolbaria, Union: Ramkrishnapur, Thana: Daulatpur",
           initials: "RH",
-          location: "Kushtia, Bangladesh",
+          location: "Savar, Bangladesh",
           policies: 0,
           join_date: "2025-10-30",
           com_org_id: 0,
@@ -2169,6 +2192,7 @@ export const StaticProjectsData = {
           ],
         },
         {
+          img: "/farmerImages/farmerimg13.jpeg",
           thana: "Gopalpur",
           union: "Mirzapur",
           zilla: "Tangail",
@@ -2176,7 +2200,7 @@ export const StaticProjectsData = {
           user_id: 5020,
           village: "Village: Hemnagar, Union: Mirzapur, Thana: Gopalpur",
           initials: "JS",
-          location: "Tangail, Bangladesh",
+          location: "Savar, Bangladesh",
           policies: 0,
           join_date: "2025-04-02",
           com_org_id: 0,
@@ -2380,7 +2404,11 @@ export default function ProjectDetailsPage() {
                     My Investment
                   </h1>
                   <div className="flex items-center gap- mt-">
-                    <p className="text-2xl font-bold text-emerald-100">
+                    <p className="text-2xl font-bold text-emerald-100 flex items-center gap-1">
+                      <FaBangladeshiTakaSign
+                        size={20}
+                        className="text-emerald-400 mt-0.5"
+                      />
                       {project.investment_amnt.toLocaleString()}
                     </p>
                   </div>
@@ -2401,7 +2429,7 @@ export default function ProjectDetailsPage() {
                 </div>
 
                 {/* Expected Return */}
-                <div
+                {/* <div
                   className="bg-emerald-950/60 backdrop-blur-xs px-4 py-2 rounded-lg shadow-md"
                   data-aos="fade-up"
                   data-aos-delay="600"
@@ -2410,7 +2438,31 @@ export default function ProjectDetailsPage() {
                     Expected Return
                   </h1>
                   <div className="flex items-center gap- mt-">
-                    <p className="text-2xl font-bold text-emerald-100">
+                    <p className="text-2xl font-bold text-emerald-100 flex items-center gap-1">
+                      <FaBangladeshiTakaSign
+                        size={20}
+                        className="text-emerald-400 mt-0.5"
+                      />
+                      {project.expected_return_amnt.toLocaleString()}
+                    </p>
+                  </div>
+                </div> */}
+
+                {/* Actual Return */}
+                <div
+                  className="bg-emerald-950/60 backdrop-blur-xs px-4 py-2 rounded-lg shadow-md"
+                  data-aos="fade-up"
+                  data-aos-delay="600"
+                >
+                  <h1 className="text-md font-bold text-emerald-300">
+                    Actual Return
+                  </h1>
+                  <div className="flex items-center gap- mt-">
+                    <p className="text-2xl font-bold text-emerald-100 flex items-center gap-1">
+                      <FaBangladeshiTakaSign
+                        size={20}
+                        className="text-emerald-400 mt-0.5"
+                      />
                       {project.expected_return_amnt.toLocaleString()}
                     </p>
                   </div>
@@ -2437,6 +2489,19 @@ export default function ProjectDetailsPage() {
                     Started: {project.startDate}
                   </span>
                 </div>
+                <div className="flex items-center gap-2 bg-emerald-50/80 px-4 py-2 rounded-full">
+                  <Calendar className="w-4 h-4 text-emerald-600" />
+                  <span className="text-sm font-medium text-emerald-700">
+                    Ended: {project.endDate}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2 bg-emerald-50/80 px-4 py-2 rounded-full">
+                  <Clock className="w-4 h-4 text-emerald-600" />
+                  <span className="text-sm font-medium text-emerald-700">
+                    Duration: {project.projectDuration} months
+                  </span>
+                </div>
+
                 <div
                   className={`flex items-center gap-2 ${
                     project.status === "Completed"
@@ -2472,8 +2537,9 @@ export default function ProjectDetailsPage() {
                   Project value
                 </p>
               </div>
-              <h3 className="text-3xl font-bold text-emerald-800 mt-1">
-                ${project.allocation.toLocaleString()}
+              <h3 className="text-3xl font-semibold text-emerald-800 mt-1 flex items-center gap-1">
+                <FaBangladeshiTakaSign size={25} />
+                {project.allocation.toLocaleString()}
               </h3>
               <p className="text-emerald-600 text-sm mt-3 leading-relaxed">
                 Allocated for infrastructure, livestock, and operational costs.
@@ -2551,12 +2617,12 @@ export default function ProjectDetailsPage() {
                               <th className="px-6 py-4 text-left text-sm font-semibold text-emerald-100">
                                 Location
                               </th>
-                              <th className="px-6 py-4 text-left text-sm font-semibold text-emerald-100">
+                              {/* <th className="px-6 py-4 text-left text-sm font-semibold text-emerald-100">
                                 Village
-                              </th>
-                              <th className="px-6 py-4 text-left text-sm font-semibold text-emerald-100">
+                              </th> */}
+                              {/* <th className="px-6 py-4 text-left text-sm font-semibold text-emerald-100">
                                 Join Date
-                              </th>
+                              </th> */}
                               <th className="px-6 py-4 text-left text-sm font-semibold text-emerald-100"></th>
                             </tr>
                           </thead>
@@ -2600,15 +2666,15 @@ export default function ProjectDetailsPage() {
                                   <td className="px-6 py-4 text-gray-700">
                                     {farmer.location}
                                   </td>
-                                  <td
+                                  {/* <td
                                     className="px-6 py-4 text-gray-700 max-w-xs truncate"
                                     title={farmer.village}
                                   >
                                     {farmer.village}
-                                  </td>
-                                  <td className="px-6 py-4 text-gray-700">
+                                  </td> */}
+                                  {/* <td className="px-6 py-4 text-gray-700">
                                     {farmer.join_date}
-                                  </td>
+                                  </td> */}
                                   <td className="px-6 py-4 text-gray-700">
                                     <ChevronRight className="w-5 h-5 text-emerald-600 group-hover:scale-125" />
                                   </td>

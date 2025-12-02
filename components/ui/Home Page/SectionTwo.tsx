@@ -44,7 +44,7 @@ export default function InvestSteps() {
     <section
       data-aos="fade-up"
       // data-aos-once="true"
-      className="py-36 bg-linear-to-br from-slate-50 to-green-50 relative shadow-[0_-25px_50px_-12px_rgba(0,0,0,0.08)] overflow-hidden"
+      className="py-24 lg:py-36 bg-linear-to-br from-slate-50 to-green-50 relative shadow-[0_-25px_50px_-12px_rgba(0,0,0,0.08)] overflow-hidden"
     >
       <div>
         <FaHandHoldingUsd
@@ -52,7 +52,7 @@ export default function InvestSteps() {
           size={400}
         />
       </div>
-      <div className="mx-auto px-6 text-center max-w-[70%] z-20 relative">
+      <div className="mx-auto px-6 text-center lg:max-w-[70%] z-20 relative">
         {/* TITLE */}
         <h2
           data-aos="fade-up"

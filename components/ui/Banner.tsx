@@ -44,7 +44,7 @@ const statsContainerVariants = {
 const Banner = () => {
   const router = useRouter();
   return (
-    <section className="bg-linear-to-br from-green-100 via-green-50/50 to-green-100 py-8 md:py-16 min-h-screen drop-shadow-xl lg:flex items-center justify-center">
+    <section className="bg-linear-to-br from-green-100 via-green-50/50 to-green-100 py-8 md:py-16 min-h-screen drop-shadow-xl lg:flex items-center justify-center pt-24 lg:pt-0">
       <motion.div
         className="mx-auto flex flex-col-reverse lg:flex-row gap-8 lg:gap-12 px-4 sm:px-6 lg:px-0 max-w-[98%] lg:max-w-[80%] h-full"
         variants={containerVariants}

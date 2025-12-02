@@ -85,10 +85,10 @@ export default function ProjectDetailsPage() {
         title: currentProject.project_name,
         farmersAssigned: allFarmers.length,
         status: currentProject.is_active ? "Active" : "Completed",
-        startDate: currentProject.startDate || "2023-01-15",
+        startDate: currentProject.startDate || "2025-02-05",
         overview:
           currentProject.overview ||
-          "Sustainable dairy farming focused on organic milk production using free-range grazing techniques.",
+          "Sustainable dairy farming focused beef fattening using free-range grazing techniques.",
         allocation: currentProject.project_value || 7500000,
         image: currentProject.image,
         investment_amnt:
@@ -411,9 +411,9 @@ export default function ProjectDetailsPage() {
                         <th className="px-6 py-4 text-left text-sm font-semibold text-emerald-100">
                           Village
                         </th>
-                        <th className="px-6 py-4 text-left text-sm font-semibold text-emerald-100">
+                        {/* <th className="px-6 py-4 text-left text-sm font-semibold text-emerald-100">
                           Join Date
-                        </th>
+                        </th> */}
                         {/* <th className="px-6 py-4 text-left text-sm font-semibold text-emerald-100">Assets</th> */}
                         <th className="px-6 py-4 text-left text-sm font-semibold text-emerald-100"></th>
                       </tr>
@@ -470,9 +470,9 @@ export default function ProjectDetailsPage() {
                             >
                               {farmer.village || "N/A"}
                             </td>
-                            <td className="px-6 py-4 text-gray-700">
+                            {/* <td className="px-6 py-4 text-gray-700">
                               {farmer.join_date}
-                            </td>
+                            </td> */}
                             <td className="px-6 py-4 text-gray-700">
                               <ChevronRight className="w-5 h-5 text-emerald-600 group-hover:scale-125" />
                             </td>

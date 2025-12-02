@@ -46,7 +46,7 @@ export default function ProjectShowcase() {
           size={500}
         />
       </div>
-      <div className="max-w-[70%] mx-auto px-6">
+      <div className="lg:max-w-[70%] mx-auto px-6">
         {/* Section Heading */}
         <div data-aos="fade-up" className="text-center mb-14">
           <h2
@@ -72,7 +72,7 @@ export default function ProjectShowcase() {
             <div
               key={idx}
               data-aos="fade-up"
-              data-aos-delay={`${idx * 200 + 600}`}
+              data-aos-delay={`${idx * 200 + 100}`}
               className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl
                         border border-white/20 overflow-hidden transform hover:-translate-y-2
                         transition-all duration-500"

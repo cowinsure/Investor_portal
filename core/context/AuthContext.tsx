@@ -9,46 +9,50 @@ import {
   useState,
   ReactNode,
   useEffect,
+  useLayoutEffect,
 } from "react";
 import { toast } from "sonner";
 import { createBaseRequest } from "../models/createBaseReq";
 
 // Define the shape of the authentication state
 interface AuthState {
-  phoneNumber: string | null;
-  userId: string | null;
-  accessToken: string | null;
-  login: (userId: string, phoneNumber: string, accessToken: string) => void;
-  logout: () => void;
-  isLoading: boolean;
-  setIsLoading: (isLoading: boolean) => void;
+   phoneNumber: string | null;
+   userId: string | null;
+   accessToken: string | null;
+   login: (userId: string, phoneNumber: string, accessToken: string) => void;
+   logout: () => void;
+   isLoading: boolean;
+   setIsLoading: (isLoading: boolean) => void;
+   isAuthLoading: boolean;
 }
 
 // Create an empty default context
 const AuthContext = createContext<AuthState | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [phoneNumber, setPhoneNumber] = useState<string | null>(null);
-  const [userId, setUserId] = useState<string | null>(null);
-  const [accessToken, setAccessToken] = useState<string | null>(null);
+   const [phoneNumber, setPhoneNumber] = useState<string | null>(() => {
+     if (typeof window !== 'undefined') {
+       return localStorage.getItem("phoneNumber");
+     }
+     return null;
+   });
+   const [userId, setUserId] = useState<string | null>(() => {
+     if (typeof window !== 'undefined') {
+       return localStorage.getItem("userId");
+     }
+     return null;
+   });
+   const [accessToken, setAccessToken] = useState<string | null>(() => {
+     if (typeof window !== 'undefined') {
+       return localStorage.getItem("accessToken");
+     }
+     return null;
+   });
 
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const router = useRouter();
+   const [isLoading, setIsLoading] = useState<boolean>(false);
+   const [isAuthLoading, setIsAuthLoading] = useState<boolean>(false);
+   const router = useRouter();
 
-  // // Load auth data from localStorage (or cookies) on initial render
-  useEffect(() => {
-    const storedUserId = localStorage.getItem("userId");
-    const storedPhoneNumber = localStorage.getItem("phoneNumber");
-    const storedAccessToken = localStorage.getItem("accessToken");
-
-    if (storedUserId && storedPhoneNumber && storedAccessToken) {
-      React.startTransition(() => {
-        setUserId(storedUserId);
-        setPhoneNumber(storedPhoneNumber);
-        setAccessToken(storedAccessToken);
-      });
-    }
-  }, []);
 
   // Function to log in the user
   const login = async (
@@ -117,6 +121,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         logout,
         isLoading,
         setIsLoading,
+        isAuthLoading,
       }}
     >
       {children}

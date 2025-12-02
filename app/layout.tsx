@@ -12,7 +12,6 @@ const roboto = Roboto({
   weight: ["100", "300", "400", "500", "700", "900"], // pick the weights you need
   variable: "--font-roboto", // optional for CSS variable
 });
-console.log("test");
 
 export const metadata: Metadata = {
   title: "Investors Portal - InsureCow",
