@@ -10,6 +10,7 @@ import { useAuth } from "@/core/context/AuthContext";
 export const navLinks = [
   { name: "Home", href: "/" },
   { name: "My Investments", href: "/investments" },
+  { name: "Documents", href: "/documents" },
   { name: "Marketplace", href: "/marketplace" },
 ];
 
@@ -59,9 +60,9 @@ export default function Navbar() {
     }
   }, [userId, logout]);
 
-  if(userId){
+  if (userId) {
     console.log("user is here");
-  }else{
+  } else {
     console.log("User isnt");
   }
 

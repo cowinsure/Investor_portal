@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useParams, useRouter, useSearchParams } from "next/navigation";
@@ -174,7 +175,7 @@ export default function FarmerDetailsPage() {
                     }`}
                   >
                     <Receipt className="w-5 h-5" />
-                    <span>Expenses</span>
+                    <span>Account</span>
                   </button>
                 </div>
               </div>
@@ -269,9 +270,9 @@ export default function FarmerDetailsPage() {
                             <th className="px-4 py-3 text-left text-sm font-semibold text-emerald-100">
                               Category
                             </th>
-                            <th className="px-4 py-3 text-left text-sm font-semibold text-emerald-100">
+                            {/* <th className="px-4 py-3 text-left text-sm font-semibold text-emerald-100">
                               Date
-                            </th>
+                            </th> */}
                             <th className="px-4 py-3 text-left text-sm font-semibold text-emerald-100">
                               Amount
                             </th>
@@ -299,7 +300,7 @@ export default function FarmerDetailsPage() {
                                 <td className="px-4 py-4 font-semibold text-gray-900">
                                   {expense.txn_head}
                                 </td>
-                                <td className="px-4 py-4 text-gray-700">N/A</td>
+                                {/* <td className="px-4 py-4 text-gray-700">N/A</td> */}
                                 <td className="px-4 py-4">
                                   <span className="font-semibold text-red-600">
                                     ${expense.amount}

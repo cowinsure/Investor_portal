@@ -36,7 +36,7 @@ export default function Footer() {
 
           {/* WhatsApp Button */}
           <Link
-            href="https://wa.me/8801999INSURE"
+            href="https://wa.me/8801999467873"
             target="_blank"
             className="flex items-center gap-3 bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-xl shadow-lg shadow-green-500/30 transition-all duration-300 hover:-translate-y-1"
           >
