@@ -569,7 +569,7 @@ export default function InvestmentMarketplace() {
                         className="w-full mt-4 py-3 rounded-xl bg-emerald-600/90 backdrop-blur-md hover:bg-emerald-500 text-white font-medium flex items-center justify-center gap-2 shadow-lg hover:shadow-emerald-400/40 transition-all duration-300 hover:-translate-y-0.5 cursor-pointer "
                         onClick={() => {
                           const message = `I am interested in investing in ${project.project_name}. Please provide more details.`;
-                          const whatsappUrl = `https://wa.me/8801686572157?text=${encodeURIComponent(
+                          const whatsappUrl = `https://wa.me/8801999467873?text=${encodeURIComponent(
                             message
                           )}`;
                           window.open(whatsappUrl, "_blank");
