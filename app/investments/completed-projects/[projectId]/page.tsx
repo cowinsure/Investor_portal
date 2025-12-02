@@ -83,7 +83,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_f1a03",
               color: "White",
-              breed: "Deshi",
+              breed: "Friesian",
               weight_kg: "242.00",
               age_in_months: 29,
               status: "sold",
@@ -107,7 +107,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_f1a06",
               color: "Brown",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "255.00",
               age_in_months: 26,
               status: "sold",
@@ -115,7 +115,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_f1a07",
               color: "Black",
-              breed: "Deshi",
+              breed: "Friesian",
               weight_kg: "233.00",
               age_in_months: 28,
               status: "sold",
@@ -139,7 +139,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_f1a10",
               color: "Brown",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "266.00",
               age_in_months: 30,
               status: "sold",
@@ -186,7 +186,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_f2a02",
               color: "Brown",
-              breed: "Deshi",
+              breed: "Friesian",
               weight_kg: "245.00",
               age_in_months: 27,
               status: "sold",
@@ -202,7 +202,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_f2a04",
               color: "Black",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "270.00",
               age_in_months: 33,
               status: "sold",
@@ -226,7 +226,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_f2a07",
               color: "Black",
-              breed: "Deshi",
+              breed: "Friesian",
               weight_kg: "238.00",
               age_in_months: 26,
               status: "sold",
@@ -234,7 +234,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_f2a08",
               color: "Brown",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "260.00",
               age_in_months: 29,
               status: "sold",
@@ -305,7 +305,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_f3a03",
               color: "Black",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "275.00",
               age_in_months: 32,
               status: "sold",
@@ -313,7 +313,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_f3a04",
               color: "Brown",
-              breed: "Deshi",
+              breed: "Friesian",
               weight_kg: "240.00",
               age_in_months: 27,
               status: "sold",
@@ -329,7 +329,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_f3a06",
               color: "White",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "265.00",
               age_in_months: 30,
               status: "sold",
@@ -345,7 +345,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_f3a08",
               color: "Black",
-              breed: "Deshi",
+              breed: "Friesian",
               weight_kg: "235.00",
               age_in_months: 26,
               status: "sold",
@@ -409,7 +409,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_f4a02",
               color: "Brown",
-              breed: "Deshi",
+              breed: "Friesian",
               weight_kg: "248.00",
               age_in_months: 27,
               status: "sold",
@@ -417,7 +417,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_f4a03",
               color: "White",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "270.00",
               age_in_months: 33,
               status: "sold",
@@ -441,7 +441,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_f4a06",
               color: "White",
-              breed: "Deshi",
+              breed: "Friesian",
               weight_kg: "238.00",
               age_in_months: 26,
               status: "sold",
@@ -449,7 +449,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_f4a07",
               color: "Black",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "285.00",
               age_in_months: 32,
               status: "sold",
@@ -473,7 +473,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_f4a10",
               color: "Brown",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "260.00",
               age_in_months: 29,
               status: "sold",
@@ -528,7 +528,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_f5a03",
               color: "Brown",
-              breed: "Deshi",
+              breed: "Friesian",
               weight_kg: "246.00",
               age_in_months: 28,
               status: "sold",
@@ -536,7 +536,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_f5a04",
               color: "White",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "269.00",
               age_in_months: 32,
               status: "sold",
@@ -560,7 +560,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_f5a07",
               color: "White",
-              breed: "Deshi",
+              breed: "Friesian",
               weight_kg: "243.00",
               age_in_months: 27,
               status: "sold",
@@ -568,7 +568,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_f5a08",
               color: "Black",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "278.00",
               age_in_months: 31,
               status: "sold",
@@ -655,7 +655,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_d91fbb82",
               color: "Black",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "240.00",
               age_in_months: 38,
               status: "sold",
@@ -744,7 +744,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_f91bb1a2",
               color: "Black",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "240.00",
               age_in_months: 32,
               status: "sold",
@@ -808,7 +808,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_b99df221",
               color: "Black",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "245.00",
               age_in_months: 34,
               status: "sold",
@@ -879,7 +879,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_e45bb131",
               color: "Black",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "235.00",
               age_in_months: 30,
               status: "sold",
@@ -927,7 +927,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_e18af221",
               color: "Black",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "240.00",
               age_in_months: 31,
               status: "sold",
@@ -966,7 +966,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_f92bc182",
               color: "Black",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "245.00",
               age_in_months: 34,
               status: "sold",
@@ -1022,7 +1022,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_a55dd971",
               color: "Black",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "250.00",
               age_in_months: 33,
               status: "sold",
@@ -1109,7 +1109,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_c12aa711",
               color: "Black",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "245.00",
               age_in_months: 34,
               status: "sold",
@@ -1204,7 +1204,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_k11a03",
               color: "White",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "268.00",
               age_in_months: 31,
               status: "sold",
@@ -1220,7 +1220,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_k11a05",
               color: "Brown",
-              breed: "Deshi",
+              breed: "Friesian",
               weight_kg: "240.00",
               age_in_months: 28,
               status: "sold",
@@ -1244,7 +1244,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_k11a08",
               color: "Brown",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "262.00",
               age_in_months: 30,
               status: "sold",
@@ -1252,7 +1252,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_k11a09",
               color: "Black",
-              breed: "Deshi",
+              breed: "Friesian",
               weight_kg: "235.00",
               age_in_months: 27,
               status: "sold",
@@ -1315,7 +1315,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_a12b03",
               color: "White",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "265.00",
               age_in_months: 32,
               status: "sold",
@@ -1331,7 +1331,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_a12b05",
               color: "Brown",
-              breed: "Deshi",
+              breed: "Friesian",
               weight_kg: "238.00",
               age_in_months: 27,
               status: "sold",
@@ -1355,7 +1355,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_a12b08",
               color: "Brown",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "270.00",
               age_in_months: 33,
               status: "sold",
@@ -1363,7 +1363,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_a12b09",
               color: "Black",
-              breed: "Deshi",
+              breed: "Friesian",
               weight_kg: "242.00",
               age_in_months: 29,
               status: "sold",
@@ -1436,7 +1436,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_d13c03",
               color: "Black",
-              breed: "Deshi",
+              breed: "Friesian",
               weight_kg: "232.00",
               age_in_months: 26,
               status: "sold",
@@ -1444,7 +1444,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_d13c04",
               color: "White",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "260.00",
               age_in_months: 30,
               status: "sold",
@@ -1476,7 +1476,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_d13c08",
               color: "White",
-              breed: "Deshi",
+              breed: "Friesian",
               weight_kg: "240.00",
               age_in_months: 28,
               status: "sold",
@@ -1484,7 +1484,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_d13c09",
               color: "Brown",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "268.00",
               age_in_months: 32,
               status: "sold",
@@ -1531,7 +1531,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_k14d01",
               color: "Brown",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "258.00",
               age_in_months: 31,
               status: "sold",
@@ -1563,7 +1563,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_k14d05",
               color: "Brown",
-              breed: "Deshi",
+              breed: "Friesian",
               weight_kg: "245.00",
               age_in_months: 29,
               status: "sold",
@@ -1571,7 +1571,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_k14d06",
               color: "Black",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "262.00",
               age_in_months: 32,
               status: "sold",
@@ -1595,7 +1595,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_k14d09",
               color: "Black",
-              breed: "Deshi",
+              breed: "Friesian",
               weight_kg: "238.00",
               age_in_months: 27,
               status: "sold",
@@ -1659,7 +1659,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_l15e03",
               color: "Black",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "255.00",
               age_in_months: 30,
               status: "sold",
@@ -1675,7 +1675,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_l15e05",
               color: "Brown",
-              breed: "Deshi",
+              breed: "Friesian",
               weight_kg: "242.00",
               age_in_months: 28,
               status: "sold",
@@ -1699,7 +1699,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_l15e08",
               color: "Brown",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "260.00",
               age_in_months: 31,
               status: "sold",
@@ -1707,7 +1707,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_l15e09",
               color: "Black",
-              breed: "Deshi",
+              breed: "Friesian",
               weight_kg: "235.00",
               age_in_months: 26,
               status: "sold",
@@ -1771,7 +1771,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_i16f03",
               color: "Brown",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "265.00",
               age_in_months: 32,
               status: "sold",
@@ -1787,7 +1787,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_i16f05",
               color: "Black",
-              breed: "Deshi",
+              breed: "Friesian",
               weight_kg: "240.00",
               age_in_months: 28,
               status: "sold",
@@ -1811,7 +1811,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_i16f08",
               color: "Black",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "258.00",
               age_in_months: 30,
               status: "sold",
@@ -1819,7 +1819,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_i16f09",
               color: "Brown",
-              breed: "Deshi",
+              breed: "Friesian",
               weight_kg: "245.00",
               age_in_months: 29,
               status: "sold",
@@ -1876,7 +1876,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_t17g01",
               color: "Brown",
-              breed: "Deshi",
+              breed: "Friesian",
               weight_kg: "238.00",
               age_in_months: 27,
               status: "sold",
@@ -1884,7 +1884,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_t17g02",
               color: "White",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "262.00",
               age_in_months: 31,
               status: "sold",
@@ -1916,7 +1916,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_t17g06",
               color: "Brown",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "268.00",
               age_in_months: 33,
               status: "sold",
@@ -1924,7 +1924,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_t17g07",
               color: "Black",
-              breed: "Deshi",
+              breed: "Friesian",
               weight_kg: "235.00",
               age_in_months: 26,
               status: "sold",
@@ -2004,7 +2004,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_r18h03",
               color: "White",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "272.00",
               age_in_months: 33,
               status: "sold",
@@ -2020,7 +2020,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_r18h05",
               color: "Black",
-              breed: "Deshi",
+              breed: "Friesian",
               weight_kg: "248.00",
               age_in_months: 29,
               status: "sold",
@@ -2044,7 +2044,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_r18h08",
               color: "Black",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "265.00",
               age_in_months: 32,
               status: "sold",
@@ -2052,7 +2052,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_r18h09",
               color: "White",
-              breed: "Deshi",
+              breed: "Friesian",
               weight_kg: "240.00",
               age_in_months: 27,
               status: "sold",
@@ -2116,7 +2116,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_d19i03",
               color: "Black",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "258.00",
               age_in_months: 32,
               status: "sold",
@@ -2132,7 +2132,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_d19i05",
               color: "Brown",
-              breed: "Deshi",
+              breed: "Friesian",
               weight_kg: "242.00",
               age_in_months: 28,
               status: "sold",
@@ -2156,7 +2156,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_d19i08",
               color: "Brown",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "262.00",
               age_in_months: 31,
               status: "sold",
@@ -2164,7 +2164,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_d19i09",
               color: "White",
-              breed: "Deshi",
+              breed: "Friesian",
               weight_kg: "238.00",
               age_in_months: 27,
               status: "sold",
@@ -2227,7 +2227,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_g20j03",
               color: "White",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "260.00",
               age_in_months: 30,
               status: "sold",
@@ -2243,7 +2243,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_g20j05",
               color: "Brown",
-              breed: "Deshi",
+              breed: "Friesian",
               weight_kg: "240.00",
               age_in_months: 28,
               status: "sold",
@@ -2267,7 +2267,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_g20j08",
               color: "Brown",
-              breed: "Jersey",
+              breed: "Sahiwal",
               weight_kg: "265.00",
               age_in_months: 32,
               status: "sold",
@@ -2275,7 +2275,7 @@ export const StaticProjectsData = {
             {
               reference_id: "cow_g20j09",
               color: "Black",
-              breed: "Deshi",
+              breed: "Friesian",
               weight_kg: "235.00",
               age_in_months: 26,
               status: "sold",
