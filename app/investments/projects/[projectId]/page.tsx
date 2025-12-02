@@ -97,7 +97,7 @@ export default function ProjectDetailsPage() {
           5000000,
         min_return_rate: currentProject.project_return_min || "17.5 - 20",
         max_return_rate: currentProject.project_return_max || "17.5 - 20",
-        expected_return_amnt: currentProject.total_expected_return || 55000000,
+        expected_return_amnt: currentProject.investments[0]?.expected_return_amount || 55000000,
         location: currentProject.project_location,
         duration: currentProject.project_duration_month,
         farmers: allFarmers,
