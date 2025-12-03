@@ -18,7 +18,7 @@ import {
   Package,
   Clock,
 } from "lucide-react";
-import image from "../../../../public/projectimg.png";
+import image from "../../../../public/project32.jpg";
 import { PiSolarRoofBold } from "react-icons/pi";
 import Section from "@/components/ui/Section";
 import { FaBangladeshiTakaSign } from "react-icons/fa6";

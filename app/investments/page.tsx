@@ -58,7 +58,7 @@ const StaticProjectsData = [
     location: "Pakundia (Syed Ga)",
     investment: 1230000,
     status: "Completed",
-    image: "/projectimg.png",
+    image: "/project32.jpg",
     description:
       "Community-driven cooperative farm specializing in grass-fed beef and regenerative agriculture.",
   },
@@ -252,7 +252,7 @@ export default function MyInvestments() {
                         className=" bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-emerald-100 hover:shadow-xl transition-all overflow-hidden flex flex-col"
                       >
                         <img
-                          src={p.image || "/farm2.png"}
+                          src={"/project33.png"}
                           alt={p.project_name}
                           className="object-cover w-full h-72"
                           onError={(e) => {
