@@ -6,16 +6,12 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import {
-  ArrowLeft,
-  Calendar,
-  MapPin,
-  Package,
-  Receipt,
-  User,
-} from "lucide-react";
+import { ArrowLeft, Calendar, MapPin, Package, Receipt } from "lucide-react";
 import useApi from "../../../../hooks/useApi";
 import Section from "@/components/ui/Section";
+import HalimaBegum from "../../../../public/farmerImages/Halima.jpeg";
+import Farid from "../../../../public/farmerImages/Farid.jpeg";
+import { FaBangladeshiTakaSign } from "react-icons/fa6";
 
 export default function FarmerDetailsPage() {
   const { farmerId } = useParams();
@@ -26,6 +22,20 @@ export default function FarmerDetailsPage() {
   const [activeTab, setActiveTab] = useState("livestock");
   const [livestock, setLivestock] = useState<any[]>([]);
   const [expenses, setExpenses] = useState<any[]>([]);
+  const [transactions, setTransactions] = useState<any[]>([]);
+
+  const staticExpenses = {
+    "29": [
+      { txn_head: "Insurance Premium", amount: 428 },
+      { txn_head: "Identification Cost", amount: 263 },
+      { txn_head: "Operational Cost", amount: 2639 },
+    ],
+    "34": [
+      { txn_head: "Insurance Premium", amount: 446 },
+      { txn_head: "Identification Cost", amount: 263 },
+      { txn_head: "Operational Cost", amount: 2720 },
+    ],
+  };
 
   useEffect(() => {
     AOS.init();
@@ -47,7 +57,21 @@ export default function FarmerDetailsPage() {
           `gls/income-expense-breakdown-service/?start_record=1&page_size=10&by_user_id=${farmerId}`
         );
         if (expensesData.status === "success") {
-          setExpenses(expensesData.data.list || []);
+          let mergedExpenses = expensesData.data.list || [];
+          const staticData =
+            staticExpenses[farmerId as keyof typeof staticExpenses];
+          if (staticData) {
+            mergedExpenses = [...mergedExpenses, ...staticData];
+          }
+          setExpenses(mergedExpenses);
+        }
+
+        // Fetch expenses
+        const transactionData = await get(
+          `gls/income-expense-service/?start_record=1&page_size=10&by_user_id=${farmerId}`
+        );
+        if (transactionData.status === "success") {
+          setTransactions(transactionData.data.list || []);
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -56,6 +80,7 @@ export default function FarmerDetailsPage() {
 
     fetchData();
   }, [get, farmerId]);
+  console.log(transactions);
 
   const searchParams = useSearchParams();
   const encoded = searchParams.get("data");
@@ -100,7 +125,13 @@ export default function FarmerDetailsPage() {
           <div data-aos="fade-up" data-aos-delay="200" className="mb-8">
             <div className="flex gap-5">
               <Image
-                src={farmerData.avatar || "/banner1.png"}
+                src={
+                  Number(farmerId) === 29
+                    ? HalimaBegum
+                    : Number(farmerId) === 34
+                    ? Farid
+                    : "/banner1.png"
+                }
                 alt={farmerData.farmer_name}
                 width={250}
                 height={120}
@@ -124,12 +155,12 @@ export default function FarmerDetailsPage() {
                       📞 {farmerData.phone}
                     </span>
                   </div> */}
-                  <div className="flex items-center gap-2 px- py-1 rounded-full">
+                  {/* <div className="flex items-center gap-2 px- py-1 rounded-full">
                     <Calendar className="w-4 h-4 text-gray-500" />
                     <span className="text-sm font-medium text-gray-500">
                       {farmerData.join_date}
                     </span>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -145,9 +176,13 @@ export default function FarmerDetailsPage() {
                   <div
                     className="absolute top-1 bottom-1 bg-emerald-950/80 rounded-xl shadow-inner transition-transform duration-300 ease-out"
                     style={{
-                      width: "50%",
+                      width: "33.33%",
                       transform: `translateX(${
-                        activeTab === "livestock" ? "0%" : "99%"
+                        activeTab === "livestock"
+                          ? "0%"
+                          : activeTab === "account"
+                          ? "100%"
+                          : "200%"
                       })`,
                     }}
                   />
@@ -165,17 +200,30 @@ export default function FarmerDetailsPage() {
                     <span>Livestock</span>
                   </button>
 
-                  {/* Expenses Tab */}
+                  {/* Account Tab */}
                   <button
-                    onClick={() => setActiveTab("expenses")}
+                    onClick={() => setActiveTab("account")}
                     className={`relative z-10 flex-1 px-5 py-3 rounded-full font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer ${
-                      activeTab === "expenses"
+                      activeTab === "account"
                         ? "text-white"
                         : "text-emerald-800 hover:text-emerald-950 hover:scale-110"
                     }`}
                   >
                     <Receipt className="w-5 h-5" />
                     <span>Account</span>
+                  </button>
+
+                  {/* Transactions Tab */}
+                  <button
+                    onClick={() => setActiveTab("transactions")}
+                    className={`relative z-10 flex-1 px-5 py-3 rounded-full font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer ${
+                      activeTab === "transactions"
+                        ? "text-white"
+                        : "text-emerald-800 hover:text-emerald-950 hover:scale-110"
+                    }`}
+                  >
+                    <Receipt className="w-5 h-5" />
+                    <span>Transactions</span>
                   </button>
                 </div>
               </div>
@@ -187,7 +235,11 @@ export default function FarmerDetailsPage() {
                     {/* <h3 className="text-xl font-bold text-gray-900 mb-6">
                     Livestock Inventory
                   </h3> */}
-                    <div className="overflow-auto rounded-2xl h-[500px]" data-lenis-prevent-wheel data-lenis-prevent-touch>
+                    <div
+                      className="overflow-auto rounded-2xl h-[500px]"
+                      data-lenis-prevent-wheel
+                      data-lenis-prevent-touch
+                    >
                       <table className="w-full">
                         <thead className="bg-emerald-950/80 border-b border-emerald-100">
                           <tr>
@@ -258,10 +310,10 @@ export default function FarmerDetailsPage() {
                   </div>
                 )}
 
-                {activeTab === "expenses" && (
-                  <div data-aos="fade-in" data-aos-delay="200">
+                {activeTab === "account" && (
+                  <div>
                     {/* <h3 className="text-xl font-bold text-gray-900 mb-6">
-                    Expense History
+                    Account History
                   </h3> */}
                     <div className="overflow-x-auto rounded-2xl">
                       <table className="w-full">
@@ -285,7 +337,7 @@ export default function FarmerDetailsPage() {
                                 colSpan={3}
                                 className="px-4 py-8 text-center text-gray-500"
                               >
-                                No expenses found
+                                No account data found
                               </td>
                             </tr>
                           )}
@@ -293,8 +345,6 @@ export default function FarmerDetailsPage() {
                             expenses.map((expense, idx) => (
                               <tr
                                 key={idx}
-                                data-aos="fade-up"
-                                data-aos-delay={`${300 + idx * 100}`}
                                 className="hover:bg-emerald-50/30 transition-colors"
                               >
                                 <td className="px-4 py-4 font-semibold text-gray-900">
@@ -302,8 +352,71 @@ export default function FarmerDetailsPage() {
                                 </td>
                                 {/* <td className="px-4 py-4 text-gray-700">N/A</td> */}
                                 <td className="px-4 py-4">
+                                  <span className="font-semibold text-red-600 flex items-center gap-1">
+                                    <FaBangladeshiTakaSign className="text-red-500" />{" "}
+                                    {expense.amount.toLocaleString()}
+                                  </span>
+                                </td>
+                              </tr>
+                            ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                )}
+
+                {activeTab === "transactions" && (
+                  <div>
+                    {/* <h3 className="text-xl font-bold text-gray-900 mb-6">
+                    Transaction History
+                  </h3> */}
+                    <div className="overflow-x-auto rounded-2xl">
+                      <table className="w-full">
+                        <thead className="bg-emerald-950/80 border-b border-emerald-100">
+                          <tr>
+                            <th className="px-4 py-3 text-left text-sm font-semibold text-emerald-100">
+                              Trx Id
+                            </th>
+                            {/* <th className="px-4 py-3 text-left text-sm font-semibold text-emerald-100">
+                              Date
+                            </th> */}
+                            <th className="px-4 py-3 text-left text-sm font-semibold text-emerald-100">
+                              Invoice no.
+                            </th>
+                            <th className="px-4 py-3 text-left text-sm font-semibold text-emerald-100">
+                              Amount
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-emerald-200">
+                          {transactions.length === 0 && !loading && (
+                            <tr>
+                              <td
+                                colSpan={3}
+                                className="px-4 py-8 text-center text-gray-500"
+                              >
+                                No transactions found
+                              </td>
+                            </tr>
+                          )}
+                          {transactions.length > 0 &&
+                            transactions.map((trx, idx) => (
+                              <tr
+                                key={idx}
+                                // data-aos="fade-up"
+                                // data-aos-delay={`${300 + idx * 100}`}
+                                className="hover:bg-emerald-50/30 transition-colors"
+                              >
+                                <td className="px-4 py-4 font-semibold text-gray-900">
+                                  {trx.voucher_no}
+                                </td>
+                                <td className="px-4 py-4 font-semibold text-gray-900 uppercase">
+                                  {trx.description}
+                                </td>
+                                {/* <td className="px-4 py-4 text-gray-700">N/A</td> */}
+                                <td className="px-4 py-4">
                                   <span className="font-semibold text-red-600">
-                                    ${expense.amount}
+                                    ${trx.amount.toLocaleString()}
                                   </span>
                                 </td>
                               </tr>

@@ -8,28 +8,33 @@ import { Layers } from "lucide-react";
 
 const projects = [
   {
-    title: "Livestock Tracking Platform",
+    title: "Insurance Portal",
     description:
       "Advanced platform for real-time cattle monitoring and health analytics using AI-powered muzzle printometry.",
-    image:
-      "https://images.pexels.com/photos/422218/pexels-photo-422218.jpeg?cs=srgb&dl=pexels-matthiaszomer-422218.jpg&fm=jpg",
-    tags: ["Next.js", "AI", "Blockchain"],
+    image: "/platforms/insurancePortal.png",
+    tags: ["Digital Asset", "Insurance Application", "Insurance Claim"],
   },
   {
-    title: "Investment Dashboard",
+    title: "Insurance ERP",
     description:
       "Secure dashboard for tracking livestock investments, returns, and portfolio performance with real-time updates.",
-    image:
-      "https://www.agrifarming.in/wp-content/uploads/2022/08/Start-Dairy-Farming6.jpg",
-    tags: ["React", "Node.js", "Web3"],
+    image: "/platforms/insuranceERP.png",
+    tags: [
+      "Insurance Management",
+      "Agent Management",
+      "Insurance Report",
+    ],
   },
   {
     title: "Farm Management System",
     description:
       "Comprehensive system for farmers to manage cattle breeding, health records, and market integration.",
-    image:
-      "https://img.freepik.com/premium-photo/cows-grazing-fieldla-pampa-province_1048944-30530807.jpg?semt=ais_hybrid&w=740&q=80",
-    tags: ["React", "Firebase", "Analytics"],
+    image: "/platforms/farmManagement.png",
+    tags: [
+      "Cattle Health Tracking",
+      "Cattle Breeding Tracking",
+      "Finance Management",
+    ],
   },
 ];
 
@@ -54,7 +59,7 @@ export default function ProjectShowcase() {
             data-aos-delay="200"
             className="text-4xl font-extrabold text-gray-900 mb-6 tracking-tight"
           >
-            Our Projects
+            Our Platforms
           </h2>
           <p
             data-aos="fade-up"
@@ -82,11 +87,11 @@ export default function ProjectShowcase() {
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-48 object-cover transition-transform duration-500 hover:scale-110"
+                  className="w-full h-48 object-contain transition-transform duration-500 hover:scale-110"
                 />
               </div>
 
-              <div className="p-6">
+              <div className="p-4">
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
                   {project.title}
                 </h3>
@@ -96,11 +101,15 @@ export default function ProjectShowcase() {
                 </p>
 
                 {/* Tags */}
-                <div className="flex items-center flex-wrap gap-2 text-sm text-gray-400">
-                  Project status: 
-                  <span className="bg-emerald-100 text-emerald-700 text-sm font-semibold px-3 py-1 rounded-full">
-                    Completed
-                  </span>
+                <div className="flex items-center flex-wrap gap-2">
+                  {project.tags.map((tag, tagIdx) => (
+                    <span
+                      key={tagIdx}
+                      className="bg-emerald-100 text-emerald-700 text-sm font-semibold px-3 py-1 rounded-full"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
