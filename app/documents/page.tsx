@@ -22,8 +22,8 @@ const documents: Document[] = [
     title: "InsureCow – Investment Deed",
     type: "Deed",
     fileType: "pdf",
-    fileUrl: "/Livestock Vaccination Schedule.pdf",
-    updated: "2024-02-10",
+    fileUrl: "/Deed.pdf",
+    updated: "2025-05-10",
     size: "1.2 MB",
   },
 ];

@@ -236,7 +236,7 @@ export default function FarmerDetailsPage() {
                     Livestock Inventory
                   </h3> */}
                     <div
-                      className="overflow-auto rounded-2xl h-[500px]"
+                      className="overflow-auto rounded-2xl"
                       data-lenis-prevent-wheel
                       data-lenis-prevent-touch
                     >

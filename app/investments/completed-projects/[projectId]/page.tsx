@@ -37,7 +37,7 @@ export const StaticProjectsData = {
   image: image,
   investment_amnt: 1230000,
   return_on_investment_percentage: "4.71",
-  expected_return_amnt: 57933,
+  expected_return_amnt: 1287933,
   sheds: [
     {
       id: 1,

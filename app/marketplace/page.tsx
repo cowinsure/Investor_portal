@@ -42,7 +42,7 @@ const marketplaceProjects = {
   message: "data found",
   data: [
     {
-      image: "portfolio_images/None/20250219_180635_uCCTLdZ.png",
+      image: "/marketplace/1.jpeg",
       is_active: true,
       project_id: 4,
       investments: null,
@@ -61,7 +61,7 @@ const marketplaceProjects = {
       project_duration_month: 12.0,
     },
     {
-      image: "portfolio_images/None/20250725_180122_p45HUNj.png",
+      image: "/marketplace/2.jpeg",
       is_active: true,
       project_id: 14,
       investments: null,
@@ -80,7 +80,7 @@ const marketplaceProjects = {
       project_duration_month: 12.0,
     },
     {
-      image: "portfolio_images/None/20250219_170215_Jbrmy9E.png",
+      image: "/marketplace/3.webp",
       is_active: true,
       project_id: 3,
       investments: null,
@@ -99,7 +99,7 @@ const marketplaceProjects = {
       project_duration_month: 12.0,
     },
     {
-      image: "portfolio_images/None/20250725_145854_XDi938y.png",
+      image: "/marketplace/4.jpeg",
       is_active: true,
       project_id: 7,
       investments: null,
@@ -118,8 +118,7 @@ const marketplaceProjects = {
       project_duration_month: 4.0,
     },
     {
-      image:
-        "portfolio_images/None/WhatsApp_Image_2025-08-04_at_13_6gjcpeV.06.08_1.jpeg",
+      image: "/marketplace/5.jpeg",
       is_active: true,
       project_id: 9,
       investments: null,
@@ -138,7 +137,7 @@ const marketplaceProjects = {
       project_duration_month: 4.0,
     },
     {
-      image: "portfolio_images/None/20250725_142438_v6eRm8K.png",
+      image: "/marketplace/6.jpg",
       is_active: true,
       project_id: 13,
       investments: null,
@@ -157,8 +156,7 @@ const marketplaceProjects = {
       project_duration_month: 6.0,
     },
     {
-      image:
-        "portfolio_images/None/WhatsApp_Image_2025-08-04_at_13_UB3bmPF.06.10.jpeg",
+      image: "/marketplace/7.jpeg",
       is_active: true,
       project_id: 10,
       investments: [
@@ -216,8 +214,7 @@ const marketplaceProjects = {
       project_duration_month: 4.0,
     },
     {
-      image:
-        "portfolio_images/None/WhatsApp_Image_2025-08-04_at_13_Pax2iND.06.07.jpeg",
+      image: "/marketplace/8.jpeg",
       is_active: true,
       project_id: 1,
       investments: [
@@ -256,7 +253,7 @@ const marketplaceProjects = {
       project_duration_month: 12.0,
     },
     {
-      image: "portfolio_images/None/IMG_0122_zTSrvHf.png",
+      image: "/marketplace/9.jpeg",
       is_active: true,
       project_id: 5,
       investments: null,
@@ -275,7 +272,7 @@ const marketplaceProjects = {
       project_duration_month: 6.0,
     },
     {
-      image: "portfolio_images/None/20250219_180955_1_aH3tvZu.png",
+      image: "/marketplace/10.webp",
       is_active: true,
       project_id: 2,
       investments: null,
@@ -294,7 +291,7 @@ const marketplaceProjects = {
       project_duration_month: 6.0,
     },
     {
-      image: "portfolio_images/None/IMG_0097_1.png",
+      image: "/marketplace/11.webp",
       is_active: true,
       project_id: 16,
       investments: null,
@@ -313,7 +310,7 @@ const marketplaceProjects = {
       project_duration_month: null,
     },
     {
-      image: "portfolio_images/None/20250725_131322.png",
+      image: "/marketplace/12.jpg",
       is_active: true,
       project_id: 15,
       investments: null,
@@ -332,8 +329,7 @@ const marketplaceProjects = {
       project_duration_month: 6.0,
     },
     {
-      image:
-        "portfolio_images/None/WhatsApp_Image_2025-08-04_at_13_uT8biJp.06.10_1.jpeg",
+      image: "/marketplace/13.jpg",
       is_active: true,
       project_id: 6,
       investments: null,
@@ -352,7 +348,7 @@ const marketplaceProjects = {
       project_duration_month: 4.0,
     },
     {
-      image: "portfolio_images/None/20250725_155115.png",
+      image: "/marketplace/14.jpg",
       is_active: true,
       project_id: 12,
       investments: null,
@@ -371,7 +367,7 @@ const marketplaceProjects = {
       project_duration_month: 6.0,
     },
     {
-      image: "portfolio_images/None/WhatsApp_Image_2025-08-04_at_13.06.08.jpeg",
+      image: "/marketplace/15.jpg",
       is_active: true,
       project_id: 8,
       investments: null,
@@ -390,8 +386,7 @@ const marketplaceProjects = {
       project_duration_month: 4.0,
     },
     {
-      image:
-        "portfolio_images/None/WhatsApp_Image_2025-08-04_at_13_nE7qxpU.06.09.jpeg",
+      image: "/marketplace/16.jpg",
       is_active: true,
       project_id: 11,
       investments: null,
@@ -485,7 +480,7 @@ export default function InvestmentMarketplace() {
                   >
                     {/* Background Image */}
                     <img
-                      src={project.image || "/farm2.png"}
+                      src={project.image}
                       alt={project.project_name}
                       className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
                       onError={(e) => (e.currentTarget.src = "/farm2.png")}
